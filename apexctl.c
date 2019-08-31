@@ -196,6 +196,7 @@ int cmd_probe (
 		if (strlen(argv[i]) > 2) {
 			return -1;
 		}
+
 		ret = sscanf(argv[i], "%2"SCNx8, &data[i]);
 		if (ret != 1) {
 			return -1;
@@ -353,7 +354,6 @@ int cmd_colors (
 			if (ret) {
 				return -1;
 			}
-
 			break;
 
 		case 7:
@@ -367,7 +367,6 @@ int cmd_colors (
 			if (ret) {
 				return -1;
 			}
-
 			break;
 
 		default:
