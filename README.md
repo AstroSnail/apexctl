@@ -73,13 +73,15 @@ Commands:
   probe   Probe for new commands.
   reboot  Reboot the keyboard.
   keys    Enable or disable extra keys.
+  poll    Set polling frequency.
   bright  Set backlight brightness.
   colors  Set colors and brightnesses per-zone.
 
 Commands usage:
   probe  <numbers>            (up to 32 2-digit hex numbers)
   reboot                      (no arguments)
-  keys   <on|off>
+  keys   <on|off>             
+  poll   <frequency>          (125, 250, 500, or 1000)
   bright <zone> <brightness>  (zone 1-5, brightness 1-8)
   colors <colors>             (see below)
 

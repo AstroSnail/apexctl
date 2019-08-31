@@ -133,12 +133,12 @@ enum {
 
 int util_digit_decompose (
 	char const * string,
-	char const * allow,
+	char const * accept,
 	uint8_t * num
 ) {
 	if (
 		strlen(string) != 1 ||
-		strspn(string, allow) != 1
+		strspn(string, accept) != 1
 	) {
 		return EXIT_FAILURE;
 	}
@@ -401,7 +401,7 @@ struct {
 	int (* function) (uint8_t [REPORT_LEN_MAX], size_t, char * *);
 	size_t args;
 	int varargs; // Non-zero to allow fewer args than specified
-} const commands[] = {
+} const commands [] = {
 #if ENABLE_CMD_PROBE
 	{
 		"probe", "Probe for new commands.",
@@ -419,13 +419,11 @@ struct {
 		"<on|off>", "",
 		cmd_keys, 1, 0
 	},
-	// Poll commented out cuz it's sketchy
-	// Might only work with the Apex RAW, which I don't have
-	/*{
+	{
 		"poll", "Set polling frequency.",
 		"<frequency>", "(125, 250, 500, or 1000)",
 		cmd_poll, 1, 0
-	},*/
+	},
 	{
 		"bright", "Set backlight brightness.",
 		"<zone> <brightness>", "(zone 1-5, brightness 1-8)",
