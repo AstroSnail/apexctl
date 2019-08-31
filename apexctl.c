@@ -193,6 +193,9 @@ int cmd_probe (
 	int ret;
 
 	for (i = 0; i < argc; ++i) {
+		if (strlen(argv[i]) > 2) {
+			return -1;
+		}
 		ret = sscanf(argv[i], "%2"SCNx8, &data[i]);
 		if (ret != 1) {
 			return -1;
