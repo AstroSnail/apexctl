@@ -31,6 +31,11 @@
 
 #define ARRAY_LEN(array) (sizeof (array) / sizeof *(array))
 
+enum {
+	SUCCESS = 0,
+	FAILURE = 1
+};
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Enable this to expose the probe command
@@ -131,72 +136,52 @@ enum {
 };
 
 
-int util_digit_decompose (
-	char const * string,
-	char const * accept,
-	uint8_t * num
-) {
-	if (
-		strlen(string) != 1 ||
-		strspn(string, accept) != 1
-	) {
-		return EXIT_FAILURE;
-	}
-
-	*num = string[0] - '0';
-
-	return EXIT_SUCCESS;
-}
-
-int util_digit_zone (
+int util_zone (
 	char const * string,
 	uint8_t * zone
 ) {
-	return util_digit_decompose(string, "12345", zone);
+	int ret;
+
+	ret = sscanf(string, "%1[12345]", zone);
+	if (ret != 1) {
+		return FAILURE;
+	}
+
+	*zone -= '0';
+
+	return SUCCESS;
 }
 
-int util_digit_brightness (
+int util_brightness (
 	char const * string,
 	uint8_t * brightness
 ) {
-	return util_digit_decompose(string, "12345678", brightness);
-}
+	int ret;
 
-int util_hex_to_num (
-	char const * string,
-	uint8_t * num
-) {
-	int res;
-
-	res = sscanf(string, "%"SCNx8, num);
-	if (res != 1) {
-		return EXIT_FAILURE;
+	ret = sscanf(string, "%1[12345678]", brightness);
+	if (ret != 1) {
+		return FAILURE;
 	}
 
-	return EXIT_SUCCESS;
+	*brightness -= '0';
+
+	return SUCCESS;
 }
 
-int util_1hex_component (
+int util_color (
 	char const * string,
-	uint8_t * component
+	uint8_t * red,
+	uint8_t * green,
+	uint8_t * blue
 ) {
-	char buffer [3] = "";
+	int ret;
 
-	buffer[0] = buffer[1] = string[0];
+	ret = sscanf(string, "%2"SCNx8"%2"SCNx8"%2"SCNx8, red, green, blue);
+	if (ret != 3) {
+		return FAILURE;
+	}
 
-	return util_hex_to_num(buffer, component);
-}
-
-int util_2hex_component (
-	char const * string,
-	uint8_t * component
-) {
-	char buffer [3] = "";
-
-	buffer[0] = string[0];
-	buffer[1] = string[1];
-
-	return util_hex_to_num(buffer, component);
+	return SUCCESS;
 }
 
 
@@ -209,8 +194,8 @@ int cmd_probe (
 	int ret;
 
 	for (i = 0; i < argc; ++i) {
-		ret = util_hex_to_num(argv[i], &data[i]);
-		if (ret != 0) {
+		ret = sscanf(argv[i], "%2"SCNx8, &data[i]);
+		if (ret != 1) {
 			return -1;
 		}
 	}
@@ -301,9 +286,15 @@ int cmd_bright (
 
 	data[0] = ID_BRIGHT;
 
-	ret  = util_digit_zone(argv[0], &zone);
-	ret |= util_digit_brightness(argv[1], &brightness);
+	if (
+		strlen(argv[0]) != 1 ||
+		strlen(argv[1]) != 1
+	) {
+		return -1;
+	}
 
+	ret  = util_zone(argv[0], &zone);
+	ret |= util_brightness(argv[1], &brightness);
 	if (ret) {
 		return -1;
 	}
@@ -323,6 +314,7 @@ int cmd_colors (
 	uint8_t red, green, blue, brightness;
 	size_t i, offset;
 	int ret;
+	char temp [7] = "";
 
 	data[0] = ID_COLORS;
 
@@ -338,23 +330,24 @@ int cmd_colors (
 				// Special case: do not affect
 				continue;
 			} else {
-				ret = util_digit_brightness(&argv[i][0], &brightness);
-				if (ret != 0) {
+				ret = util_brightness(argv[i], &brightness);
+				if (ret) {
 					return -1;
 				}
 			}
 			break;
 
 		case 4:
-			ret = util_digit_brightness(&argv[i][3], &brightness);
-			if (ret != 0) {
+			ret = util_brightness(&argv[i][3], &brightness);
+			if (ret) {
 				return -1;
 			}
 			// Fallthrough
 		case 3:
-			ret  = util_1hex_component(&argv[i][0], &red);
-			ret |= util_1hex_component(&argv[i][1], &green);
-			ret |= util_1hex_component(&argv[i][2], &blue);
+			temp[0] = temp[1] = argv[i][0];
+			temp[2] = temp[3] = argv[i][1];
+			temp[4] = temp[5] = argv[i][2];
+			ret = util_color(temp, &red, &green, &blue);
 			if (ret) {
 				return -1;
 			}
@@ -362,15 +355,13 @@ int cmd_colors (
 			break;
 
 		case 7:
-			ret = util_digit_brightness(&argv[i][6], &brightness);
-			if (ret != 0) {
+			ret = util_brightness(&argv[i][6], &brightness);
+			if (ret) {
 				return -1;
 			}
 			// Fallthrough
 		case 6:
-			ret  = util_2hex_component(&argv[i][0], &red);
-			ret |= util_2hex_component(&argv[i][2], &green);
-			ret |= util_2hex_component(&argv[i][4], &blue);
+			ret = util_color(argv[i], &red, &green, &blue);
 			if (ret) {
 				return -1;
 			}
