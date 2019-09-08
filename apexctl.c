@@ -66,9 +66,8 @@ int usb_setup (
 	};
 	size_t i;
 	size_t n = ARRAY_LEN(products);
-	int ret;
 
-	ret = hid_init();
+	int ret = hid_init();
 	if (ret != 0) {
 		return ret;
 	}
@@ -100,10 +99,8 @@ int usb_put (
 	uint8_t const data [REPORT_LEN_MAX],
 	size_t bytes
 ) {
-	size_t i;
-
 	if (ENABLE_DATA_PRINT == 1) {
-		for (i = 0; i < bytes; ++i) {
+		for (size_t i = 0; i < bytes; ++i) {
 			fprintf(stdout, "%02"PRIX8" ", data[i]);
 		}
 		fputs("\n", stdout);
@@ -140,9 +137,7 @@ bool util_zone (
 	char const * string,
 	uint8_t * zone
 ) {
-	int ret;
-
-	ret = sscanf(string, "%1[12345]", zone);
+	int ret = sscanf(string, "%1[12345]", zone);
 	if (ret != 1) {
 		return FAILURE;
 	}
@@ -156,9 +151,7 @@ bool util_brightness (
 	char const * string,
 	uint8_t * brightness
 ) {
-	int ret;
-
-	ret = sscanf(string, "%1[12345678]", brightness);
+	int ret = sscanf(string, "%1[12345678]", brightness);
 	if (ret != 1) {
 		return FAILURE;
 	}
@@ -174,9 +167,7 @@ bool util_color (
 	uint8_t * green,
 	uint8_t * blue
 ) {
-	int ret;
-
-	ret = sscanf(string, "%2"SCNx8"%2"SCNx8"%2"SCNx8, red, green, blue);
+	int ret = sscanf(string, "%2"SCNx8"%2"SCNx8"%2"SCNx8, red, green, blue);
 	if (ret != 3) {
 		return FAILURE;
 	}
@@ -190,10 +181,9 @@ int cmd_probe (
 	size_t argc,
 	char * * argv
 ) {
-	size_t i;
-	int ret;
+	for (size_t i = 0; i < argc; ++i) {
+		int ret;
 
-	for (i = 0; i < argc; ++i) {
 		if (strlen(argv[i]) > 2) {
 			return -1;
 		}
@@ -315,18 +305,17 @@ int cmd_colors (
 	size_t argc,
 	char * * argv
 ) {
-	uint8_t red, green, blue, brightness;
-	size_t i, offset;
-	int ret;
-	char temp [7] = "";
+	size_t i;
 
 	data[0] = ID_COLORS;
 
 	// Order: South, East, North, West, Logo
 	for (i = 0; i < argc; ++i) {
 		// Default: white, brightest
-		red = green = blue = 0xff;
-		brightness = 8;
+		uint8_t red = 0xFF, green = 0xFF, blue = 0xFF, brightness = 8;
+		size_t offset;
+		int ret;
+		char temp [7] = "";
 
 		switch (strlen(argv[i])) {
 		case 1:
@@ -432,19 +421,18 @@ struct {
 void help (
 	char const * argv0
 ) {
-	size_t i;
 	size_t n = ARRAY_LEN(commands);
 
 	fprintf(stderr, "Usage: %s <command> [arguments...]\n\n", argv0);
 
 	fputs("Commands:\n", stderr);
-	for (i = 0; i < n; ++i) {
+	for (size_t i = 0; i < n; ++i) {
 		fprintf(stderr, "  %-6s  %s\n", commands[i].command, commands[i].description);
 	}
 	fputs("\n", stderr);
 
 	fputs("Commands usage:\n", stderr);
-	for (i = 0; i < n; ++i) {
+	for (size_t i = 0; i < n; ++i) {
 		fprintf(stderr, "  %-6s %-19s  %s\n", commands[i].command, commands[i].usage, commands[i].explain);
 	}
 	fputs("\n", stderr);
@@ -475,7 +463,6 @@ int main (
 	size_t argc = _argc;
 	size_t i;
 	size_t n = ARRAY_LEN(commands);
-	size_t bytes;
 	int ret = 0;
 
 	if (argc < 2) {
@@ -498,7 +485,7 @@ int main (
 	}
 
 	if (i < n && ret >= 0) {
-		bytes = ret;
+		size_t bytes = ret;
 
 		ret = usb_setup(&device);
 		if (ret == 0) {
