@@ -22,6 +22,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <inttypes.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -32,8 +33,8 @@
 #define ESTRINGIFY(e) STRINGIFY(e) // Expands and then stringifies
 
 enum {
-	SUCCESS = 0,
-	FAILURE = 1
+	SUCCESS = false,
+	FAILURE = true
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -135,7 +136,7 @@ enum {
 };
 
 
-int util_zone (
+bool util_zone (
 	char const * string,
 	uint8_t * zone
 ) {
@@ -151,7 +152,7 @@ int util_zone (
 	return SUCCESS;
 }
 
-int util_brightness (
+bool util_brightness (
 	char const * string,
 	uint8_t * brightness
 ) {
@@ -167,7 +168,7 @@ int util_brightness (
 	return SUCCESS;
 }
 
-int util_color (
+bool util_color (
 	char const * string,
 	uint8_t * red,
 	uint8_t * green,
