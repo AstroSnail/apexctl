@@ -28,6 +28,8 @@
 #include <hidapi.h>
 
 #define ARRAY_LEN(array) (sizeof (array) / sizeof *(array))
+#define STRINGIFY(e) #e            // Stringifies without expanding
+#define ESTRINGIFY(e) STRINGIFY(e) // Expands and then stringifies
 
 enum {
 	SUCCESS = 0,
@@ -46,7 +48,6 @@ enum {
 #define ENABLE_DATA_PRINT 0
 #endif
 
-// If you change this, don't forget to fix probe's explain entry
 #define REPORT_LEN_MAX 32
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -396,7 +397,7 @@ struct {
 #if ENABLE_CMD_PROBE
 	{
 		"probe", "Probe for new commands.",
-		"<numbers>", "(up to 32 2-digit hex numbers)",
+		"<numbers>", "(up to " ESTRINGIFY(REPORT_LEN_MAX) " 2-digit hex numbers)",
 		cmd_probe, REPORT_LEN_MAX, 1
 	},
 #endif
