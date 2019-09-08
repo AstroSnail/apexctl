@@ -93,7 +93,7 @@ int usb_cleanup (
 }
 
 
-int cmd_put (
+int usb_put (
 	hid_device * * device,
 	uint8_t const data [REPORT_LEN_MAX],
 	size_t bytes
@@ -102,9 +102,9 @@ int cmd_put (
 
 	if (ENABLE_DATA_PRINT == 1) {
 		for (i = 0; i < bytes; ++i) {
-			printf("%x ", data[i]);
+			fprintf(stdout, "%02"PRIX8" ", data[i]);
 		}
-		printf("\n");
+		fputs("\n", stdout);
 	}
 
 	return hid_send_feature_report(*device, data, bytes);
@@ -385,8 +385,8 @@ int cmd_colors (
 ///////////////////////////////////////////////////////////////////////////////
 
 struct {
-	char const * cmd;
-	char const * desc;
+	char const * command;
+	char const * description;
 	char const * usage;
 	char const * explain;
 	int (* function) (uint8_t [REPORT_LEN_MAX], size_t, char * *);
@@ -433,33 +433,33 @@ void help (
 	size_t i;
 	size_t n = ARRAY_LEN(commands);
 
-	printf("Usage: %s <command> [arguments...]\n", argv0);
-	puts("");
+	fprintf(stderr, "Usage: %s <command> [arguments...]\n", argv0);
+	fputs("\n", stderr);
 
-	puts("Commands:");
+	fputs("Commands:\n", stderr);
 	for (i = 0; i < n; ++i) {
-		printf("  %-6s  %s\n", commands[i].cmd, commands[i].desc);
+		fprintf(stderr, "  %-6s  %s\n", commands[i].command, commands[i].description);
 	}
-	puts("");
+	fputs("\n", stderr);
 
-	puts("Commands usage:");
+	fputs("Commands usage:\n", stderr);
 	for (i = 0; i < n; ++i) {
-		printf("  %-6s %-19s  %s\n", commands[i].cmd, commands[i].usage, commands[i].explain);
+		fprintf(stderr, "  %-6s %-19s  %s\n", commands[i].command, commands[i].usage, commands[i].explain);
 	}
-	puts("");
+	fputs("\n", stderr);
 
-	puts("Color specification:");
-	puts("  Up to 5 colors can be specified.");
-	puts("  They set south, east, north, west and logo zones, in that order.");
-	puts("  The formats are case-insensitive.");
-	puts("");
-	puts("  Format   Example  Meaning");
-	puts("  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4 (from 1 to 8)");
-	puts("  RRGGBB   ABCDEF   Equivalent to ABCDEF8");
-	puts("  RGBA     ACE4     Equivalent to AACCEE4");
-	puts("  RGB      ACE      Equivalent to AACCEE8");
-	puts("  A        4        Equivalent to FFFFFF4");
-	puts("  0                 SPECIAL: Does not affect the zone");
+	fputs("Color specification:\n", stderr);
+	fputs("  Up to 5 colors can be specified.\n", stderr);
+	fputs("  They set south, east, north, west and logo zones, in that order.\n", stderr);
+	fputs("  The formats are case-insensitive.\n", stderr);
+	fputs("\n", stderr);
+	fputs("  Format   Example  Meaning\n", stderr);
+	fputs("  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4 (from 1 to 8)\n", stderr);
+	fputs("  RRGGBB   ABCDEF   Equivalent to ABCDEF8\n", stderr);
+	fputs("  RGBA     ACE4     Equivalent to AACCEE4\n", stderr);
+	fputs("  RGB      ACE      Equivalent to AACCEE8\n", stderr);
+	fputs("  A        4        Equivalent to FFFFFF4\n", stderr);
+	fputs("  0                 SPECIAL: Does not affect the zone\n", stderr);
 }
 
 
@@ -480,7 +480,7 @@ int main (
 		return 0;
 	} else {
 		for (i = 0; i < n; ++i) {
-			if (strcmp(argv[1], commands[i].cmd) == 0) {
+			if (strcmp(argv[1], commands[i].command) == 0) {
 				if (
 					( commands[i].varargs && argc - 2 <= commands[i].args) ||
 					(!commands[i].varargs && argc - 2 == commands[i].args)
@@ -499,7 +499,7 @@ int main (
 
 		ret = usb_setup(&device);
 		if (ret == 0) {
-			cmd_put(&device, data, bytes);
+			usb_put(&device, data, bytes);
 		} else {
 			fputs("Re-run as root!\n", stderr);
 		}
