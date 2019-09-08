@@ -468,19 +468,19 @@ int main (
 	if (argc < 2) {
 		help(argv[0]);
 		return 0;
-	} else {
-		for (i = 0; i < n; ++i) {
-			if (strcmp(argv[1], commands[i].command) == 0) {
-				if (
-					( commands[i].varargs && argc - 2 <= commands[i].args) ||
-					(!commands[i].varargs && argc - 2 == commands[i].args)
-				) {
-					ret = commands[i].function(data, argc - 2, &argv[2]);
-				} else {
-					ret = -1;
-				}
-				break;
+	}
+
+	for (i = 0; i < n; ++i) {
+		if (strcmp(argv[1], commands[i].command) == 0) {
+			if (
+				( commands[i].varargs && argc - 2 <= commands[i].args) ||
+				(!commands[i].varargs && argc - 2 == commands[i].args)
+			) {
+				ret = commands[i].function(data, argc - 2, &argv[2]);
+			} else {
+				ret = -1;
 			}
+			break;
 		}
 	}
 
