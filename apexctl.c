@@ -434,8 +434,7 @@ void help (
 	size_t i;
 	size_t n = ARRAY_LEN(commands);
 
-	fprintf(stderr, "Usage: %s <command> [arguments...]\n", argv0);
-	fputs("\n", stderr);
+	fprintf(stderr, "Usage: %s <command> [arguments...]\n\n", argv0);
 
 	fputs("Commands:\n", stderr);
 	for (i = 0; i < n; ++i) {
@@ -449,18 +448,20 @@ void help (
 	}
 	fputs("\n", stderr);
 
-	fputs("Color specification:\n", stderr);
-	fputs("  Up to 5 colors can be specified.\n", stderr);
-	fputs("  They set south, east, north, west and logo zones, in that order.\n", stderr);
-	fputs("  The formats are case-insensitive.\n", stderr);
-	fputs("\n", stderr);
-	fputs("  Format   Example  Meaning\n", stderr);
-	fputs("  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4 (from 1 to 8)\n", stderr);
-	fputs("  RRGGBB   ABCDEF   Equivalent to ABCDEF8\n", stderr);
-	fputs("  RGBA     ACE4     Equivalent to AACCEE4\n", stderr);
-	fputs("  RGB      ACE      Equivalent to AACCEE8\n", stderr);
-	fputs("  A        4        Equivalent to FFFFFF4\n", stderr);
-	fputs("  0                 SPECIAL: Does not affect the zone\n", stderr);
+	fputs(
+		"Color specification:\n"
+		"  Up to 5 colors can be specified.\n"
+		"  They set south, east, north, west and logo zones, in that order.\n"
+		"  The formats are case-insensitive.\n"
+		"\n"
+		"  Format   Example  Meaning\n"
+		"  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4 (from 1 to 8)\n"
+		"  RRGGBB   ABCDEF   Equivalent to ABCDEF8\n"
+		"  RGBA     ACE4     Equivalent to AACCEE4\n"
+		"  RGB      ACE      Equivalent to AACCEE8\n"
+		"  A        4        Equivalent to FFFFFF4\n"
+		"  0                 SPECIAL: Does not affect the zone\n",
+	stderr);
 }
 
 
