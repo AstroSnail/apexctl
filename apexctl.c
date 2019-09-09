@@ -21,6 +21,7 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////////
 
+#include <assert.h>
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -99,7 +100,7 @@ int usb_put (
 	uint8_t const data [REPORT_LEN_MAX],
 	size_t bytes
 ) {
-	if (ENABLE_DATA_PRINT == 1) {
+	if (ENABLE_DATA_PRINT) {
 		for (size_t i = 0; i < bytes; ++i) {
 			fprintf(stdout, "%02"PRIX8" ", data[i]);
 		}
@@ -203,7 +204,8 @@ int cmd_reboot (
 	size_t argc,
 	char * * argv
 ) {
-	(void) argc; // Always 0
+	assert(argc == 0);
+	(void) argc;
 	(void) argv;
 
 	data[0] = ID_REBOOT;
@@ -217,7 +219,8 @@ int cmd_keys (
 	size_t argc,
 	char * * argv
 ) {
-	(void) argc; // Always 1
+	assert(argc == 1);
+	(void) argc;
 
 	data[0] = ID_KEYS;
 
@@ -240,7 +243,8 @@ int cmd_poll (
 	size_t argc,
 	char * * argv
 ) {
-	(void) argc; // Always 1
+	assert(argc == 1);
+	(void) argc;
 
 	data[0] = ID_POLL;
 
@@ -276,7 +280,8 @@ int cmd_bright (
 	uint8_t zone, brightness;
 	int ret;
 
-	(void) argc; // Always 2
+	assert(argc == 2);
+	(void) argc;
 
 	data[0] = ID_BRIGHT;
 
