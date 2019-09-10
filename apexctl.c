@@ -64,8 +64,7 @@ int usb_setup (
 		0x1206, // Apex 350
 		0x1208  // Apex 300
 	};
-	size_t i;
-	size_t n = ARRAY_LEN(products);
+	size_t i, n = ARRAY_LEN(products);
 
 	int ret = hid_init();
 	if (ret != 0) {
@@ -230,17 +229,15 @@ int cmd_keys (
 
 	data[0] = ID_KEYS;
 
-	if (strcmp(argv[0], "off") == 0) {
+	if        (strcmp(argv[0], "off") == 0) {
 		data[2] = KEYS_OFF;
-		return 3;
-	}
-
-	if (strcmp(argv[0], "on") == 0) {
+	} else if (strcmp(argv[0], "on") == 0) {
 		data[2] = KEYS_ON;
-		return 3;
+	} else {
+		return -1;
 	}
 
-	return -1;
+	return 3;
 }
 
 
@@ -255,27 +252,19 @@ int cmd_poll (
 
 	data[0] = ID_POLL;
 
-	if (strcmp(argv[0], "125") == 0) {
+	if        (strcmp(argv[0], "125") == 0) {
 		data[2] = POLL_125;
-		return 3;
-	}
-
-	if (strcmp(argv[0], "250") == 0) {
+	} else if (strcmp(argv[0], "250") == 0) {
 		data[2] = POLL_250;
-		return 3;
-	}
-
-	if (strcmp(argv[0], "500") == 0) {
+	} else if (strcmp(argv[0], "500") == 0) {
 		data[2] = POLL_500;
-		return 3;
-	}
-
-	if (strcmp(argv[0], "1000") == 0) {
+	} else if (strcmp(argv[0], "1000") == 0) {
 		data[2] = POLL_1000;
-		return 3;
+	} else {
+		return -1;
 	}
 
-	return -1;
+	return 3;
 }
 
 
@@ -485,8 +474,7 @@ int main (
 	hid_device * device;
 	uint8_t data [REPORT_LEN_MAX] = {0};
 	size_t argc = _argc;
-	size_t i;
-	size_t n = ARRAY_LEN(commands);
+	size_t i, n = ARRAY_LEN(commands);
 	int ret = 0;
 
 	if (argc < 2) {
