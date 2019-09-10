@@ -21,7 +21,6 @@
 // limitations under the License.
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <assert.h>
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -182,6 +181,10 @@ int cmd_probe (
 	size_t argc,
 	char * * argv
 ) {
+	if (argc > REPORT_LEN_MAX) {
+		return -1;
+	}
+
 	for (size_t i = 0; i < argc; ++i) {
 		int ret;
 
@@ -204,8 +207,10 @@ int cmd_reboot (
 	size_t argc,
 	char * * argv
 ) {
-	assert(argc == 0);
-	(void) argc;
+	if (argc != 0) {
+		return -1;
+	}
+
 	(void) argv;
 
 	data[0] = ID_REBOOT;
@@ -219,8 +224,9 @@ int cmd_keys (
 	size_t argc,
 	char * * argv
 ) {
-	assert(argc == 1);
-	(void) argc;
+	if (argc != 1) {
+		return -1;
+	}
 
 	data[0] = ID_KEYS;
 
@@ -243,8 +249,9 @@ int cmd_poll (
 	size_t argc,
 	char * * argv
 ) {
-	assert(argc == 1);
-	(void) argc;
+	if (argc != 1) {
+		return -1;
+	}
 
 	data[0] = ID_POLL;
 
@@ -277,20 +284,18 @@ int cmd_bright (
 	size_t argc,
 	char * * argv
 ) {
-	uint8_t zone, brightness;
-	int ret;
-
-	assert(argc == 2);
-	(void) argc;
-
-	data[0] = ID_BRIGHT;
-
 	if (
+		argc != 2 ||
 		strlen(argv[0]) != 1 ||
 		strlen(argv[1]) != 1
 	) {
 		return -1;
 	}
+
+	data[0] = ID_BRIGHT;
+
+	uint8_t zone, brightness;
+	int ret;
 
 	ret  = util_zone(argv[0], &zone);
 	ret |= util_brightness(argv[1], &brightness);
@@ -310,9 +315,13 @@ int cmd_colors (
 	size_t argc,
 	char * * argv
 ) {
-	size_t i;
+	if (argc > 5) {
+		return -1;
+	}
 
 	data[0] = ID_COLORS;
+
+	size_t i;
 
 	// Order: South, East, North, West, Logo
 	for (i = 0; i < argc; ++i) {
@@ -386,40 +395,50 @@ struct {
 	char const * usage;
 	char const * explain;
 	int (* function) (uint8_t [REPORT_LEN_MAX], size_t, char * *);
-	size_t args;
-	int varargs; // Non-zero to allow fewer args than specified
 } const commands [] = {
 #if ENABLE_CMD_PROBE
 	{
-		"probe", "Probe for new commands.",
-		"<numbers>", "(up to " ESTRINGIFY(REPORT_LEN_MAX) " 2-digit hex numbers)",
-		cmd_probe, REPORT_LEN_MAX, 1
+		"probe",
+		"Probe for new commands.",
+		"<numbers>",
+		"(up to " ESTRINGIFY(REPORT_LEN_MAX) " 2-digit hex numbers)",
+		cmd_probe
 	},
 #endif
 	{
-		"reboot", "Reboot the keyboard.",
-		"", "(no arguments)",
-		cmd_reboot, 0, 0
+		"reboot",
+		"Reboot the keyboard.",
+		"",
+		"(no arguments)",
+		cmd_reboot
 	},
 	{
-		"keys", "Enable or disable extra keys.",
-		"<on|off>", "",
-		cmd_keys, 1, 0
+		"keys",
+		"Enable or disable extra keys.",
+		"<on|off>",
+		"",
+		cmd_keys
 	},
 	{
-		"poll", "Set polling frequency.",
-		"<frequency>", "(125, 250, 500, or 1000)",
-		cmd_poll, 1, 0
+		"poll",
+		"Set polling frequency.",
+		"<frequency>",
+		"(125, 250, 500, or 1000)",
+		cmd_poll
 	},
 	{
-		"bright", "Set backlight brightness.",
-		"<zone> <brightness>", "(zone 1-5, brightness 1-8)",
-		cmd_bright, 2, 0
+		"bright",
+		"Set backlight brightness.",
+		"<zone> <brightness>",
+		"(zone 1-5, brightness 1-8)",
+		cmd_bright
 	},
 	{
-		"colors", "Set colors and brightnesses per-zone.",
-		"<colors>", "(see below)",
-		cmd_colors, 5, 1
+		"colors",
+		"Set colors and brightnesses per-zone.",
+		"<colors>",
+		"(see below)",
+		cmd_colors
 	}
 };
 
@@ -477,14 +496,7 @@ int main (
 
 	for (i = 0; i < n; ++i) {
 		if (strcmp(argv[1], commands[i].command) == 0) {
-			if (
-				( commands[i].varargs && argc - 2 <= commands[i].args) ||
-				(!commands[i].varargs && argc - 2 == commands[i].args)
-			) {
-				ret = commands[i].function(data, argc - 2, &argv[2]);
-			} else {
-				ret = -1;
-			}
+			ret = commands[i].function(data, argc - 2, &argv[2]);
 			break;
 		}
 	}
