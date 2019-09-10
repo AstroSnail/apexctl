@@ -34,7 +34,7 @@
 
 enum {
 	SUCCESS = false,
-	FAILURE = true
+	FAILURE = true,
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ int usb_setup (
 		0x1200, // Apex RAW
 		0x1202, // Apex
 		0x1206, // Apex 350
-		0x1208  // Apex 300
+		0x1208, // Apex 300
 	};
 	size_t i, n = ARRAY_LEN(products);
 
@@ -116,19 +116,19 @@ enum {
 	ID_KEYS   = 0x02,
 	ID_POLL   = 0x04,
 	ID_BRIGHT = 0x05,
-	ID_COLORS = 0x07
+	ID_COLORS = 0x07,
 };
 
 enum {
 	KEYS_OFF = 1,
-	KEYS_ON  = 2
+	KEYS_ON  = 2,
 };
 
 enum {
 	POLL_125  = 0,
 	POLL_250  = 1,
 	POLL_500  = 2,
-	POLL_1000 = 3
+	POLL_1000 = 3,
 };
 
 
@@ -428,7 +428,7 @@ struct {
 		"<colors>",
 		"(see below)",
 		cmd_colors
-	}
+	},
 };
 
 void help (
