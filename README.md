@@ -14,12 +14,18 @@
 
  - hidapi
  - libusb (if the hidapi-hidraw implementation is unavailable or broken)
- - pkg-config
+ - pkgconf
 
 ### Arch:
 
 ```
-pacman -S --needed hidapi pkg-config
+pacman -S --needed hidapi pkgconf
+```
+
+### Fedora:
+
+```
+yum install hidapi-devel pkgconf
 ```
 
 **TODO:** add more distros
