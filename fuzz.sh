@@ -1,6 +1,5 @@
 #!/bin/bash
 
-interesting=0
 declare -a args
 
 while :
@@ -9,6 +8,7 @@ do
 	do
 		args[$i]=$(printf %02x $(($RANDOM%256)))
 	done
+
 	echo 'Running `sudo ./apexctl probe '${args[*]}
 	sudo ./apexctl probe ${args[*]}
 	if (($?))
@@ -16,6 +16,7 @@ do
 		echo 'Something went wrong...'
 		exit 1
 	fi
+
 	echo 'Did something interesting happen?'
 	read yesno
 	if [[ "$yesno" = y* ]]
