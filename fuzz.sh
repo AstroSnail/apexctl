@@ -9,7 +9,7 @@ do
 		args[$i]=$(printf %02x $(($RANDOM%256)))
 	done
 
-	echo 'Running `sudo ./apexctl probe '${args[*]}
+	echo 'Running `sudo ./apexctl probe '${args[*]}\'
 	sudo ./apexctl probe ${args[*]}
 	if (($?))
 	then
