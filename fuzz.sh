@@ -20,7 +20,9 @@ do
 	read yesno
 	if [[ "$yesno" = y* ]]
 	then
-		echo 'Post on GitHub for further analysis!'
+		echo 'OK, now try to reduce the command to its smallest while still doing something interesting'
+		echo 'You'\''ll have to do this manually'
+		echo 'Post your findings on GitHub if you think you'\''re onto something'
 		exit 0
 	fi
 done
