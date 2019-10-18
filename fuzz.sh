@@ -1,16 +1,12 @@
 #!/bin/bash
 
 declare -a args
-onecommand=0
 
-if (($#))
-then
-	onecommand=$#
-	for ((i=1; i<=$#; ++i))
-	do
-		args[$(($i-1))]="${!i}"
-	done
-fi
+onecommand=$#
+for ((i=1; i<=$#; ++i))
+do
+	args[$(($i-1))]="${!i}"
+done
 
 while :
 do
