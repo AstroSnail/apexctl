@@ -3,10 +3,13 @@
 declare -a args
 onecommand=0
 
-if [ "$1" ]
+if (($#))
 then
-	onecommand=1
-	args[0]="$1"
+	onecommand=$#
+	for ((i=1; i<=$#; ++i))
+	do
+		args[$(($i-1))]="${!i}"
+	done
 fi
 
 while :
