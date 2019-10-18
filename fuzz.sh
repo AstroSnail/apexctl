@@ -1,13 +1,29 @@
 #!/bin/bash
 
 declare -a args
+onecommand=0
+
+if [ "$1" ]
+then
+	onecommand=1
+	args[0]="$1"
+fi
 
 while :
 do
-	for ((i=0; i<32; ++i))
+	for ((i=$onecommand; i<32; ++i))
 	do
 		args[$i]=$(printf %02x $(($RANDOM%256)))
 	done
+
+	if ! ((onecommand))
+	then
+		case $args[0] in
+			(01|02|04|05|07)
+				continue
+				;;
+		esac
+	fi
 
 	echo 'Running `sudo ./apexctl probe '${args[*]}\'
 	sudo ./apexctl probe ${args[*]}
