@@ -136,7 +136,7 @@ bool util_zone (
 	char const * string,
 	uint8_t * zone
 ) {
-	int ret = sscanf(string, "%1[12345]", zone);
+	int ret = sscanf(string, "%1[1-5]", zone);
 	if (ret != 1) {
 		return FAILURE;
 	}
@@ -150,7 +150,7 @@ bool util_brightness (
 	char const * string,
 	uint8_t * brightness
 ) {
-	int ret = sscanf(string, "%1[12345678]", brightness);
+	int ret = sscanf(string, "%1[1-8]", brightness);
 	if (ret != 1) {
 		return FAILURE;
 	}
