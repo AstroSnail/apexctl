@@ -81,6 +81,7 @@ Commands:
   keys    Enable or disable extra keys.
   poll    Set polling frequency.
   bright  Set backlight brightness.
+  save    [NEW&BUGGY] Save state changed since keyboard power-on
   colors  Set colors and brightnesses per-zone.
 
 Commands usage:
@@ -89,6 +90,7 @@ Commands usage:
   keys   <on|off>             
   poll   <frequency>          (125, 250, 500, or 1000)
   bright <zone> <brightness>  (zone 1-5, brightness 1-8)
+  save                        (no arguments)
   colors <colors>             (see below)
 
 Color specification:
