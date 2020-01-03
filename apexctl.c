@@ -6,7 +6,7 @@
 // With some influence from Apex-Macros:
 //   <https://github.com/Gibtnix/Apex-Macros>
 //
-// Copyright 2019 AstroSnail
+// Copyright 2020 AstroSnail
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -117,6 +117,7 @@ enum {
 	ID_KEYS   = 0x02,
 	ID_POLL   = 0x04,
 	ID_BRIGHT = 0x05,
+	ID_SAVE   = 0x06,
 	ID_COLORS = 0x07,
 };
 
@@ -137,7 +138,7 @@ bool util_zone (
 	char const * string,
 	uint8_t * zone
 ) {
-	int ret = sscanf(string, "%1[12345]", zone);
+	int ret = sscanf(string, "%1[1-5]", zone);
 	if (ret != 1) {
 		return FAILURE;
 	}
@@ -151,7 +152,7 @@ bool util_brightness (
 	char const * string,
 	uint8_t * brightness
 ) {
-	int ret = sscanf(string, "%1[12345678]", brightness);
+	int ret = sscanf(string, "%1[1-8]", brightness);
 	if (ret != 1) {
 		return FAILURE;
 	}
@@ -300,6 +301,23 @@ int cmd_bright (
 }
 
 
+int cmd_save (
+	uint8_t data [REPORT_LEN_MAX],
+	size_t argc,
+	char * * argv
+) {
+	if (argc != 0) {
+		return -1;
+	}
+
+	(void) argv;
+
+	data[0] = ID_SAVE;
+
+	return 1;
+}
+
+
 int cmd_colors (
 	uint8_t data [REPORT_LEN_MAX],
 	size_t argc,
@@ -422,6 +440,13 @@ struct {
 		"<zone> <brightness>",
 		"(zone 1-5, brightness 1-8)",
 		cmd_bright
+	},
+	{
+		"save",
+		"[NEW&BUGGY] Save state changed since keyboard power-on",
+		"",
+		"(no arguments)",
+		cmd_save
 	},
 	{
 		"colors",
