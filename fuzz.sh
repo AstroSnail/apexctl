@@ -18,7 +18,7 @@ do
 	if ! ((onecommand))
 	then
 		case $args[0] in
-			(01|02|04|05|07)
+			(01|02|04|05|06|07)
 				continue
 				;;
 		esac
