@@ -97,31 +97,36 @@ Color specification:
 ```
 
 The key mappings are as follows:
-Key | Symbol
----:|:---
-L1 | XF86Launch5
-L2 | XF86Launch6
-L3 | XF86Launch7
-L4 | XF86Launch8
-M1 | XF86Launch1
-M2 | XF86Launch2
-M3 | XF86WWW
-M4 | XF86DOS
-M5 | XF86ScreenSaver
-M6 | XF86RotateWindows
-M7 | XF86TaskPane
-M8 | XF86Mail
-M9 | XF86Favorites
-M10 | XF86MyComputer
-M11 | XF86Back
-M12 | XF86Forward
-MX1 | XF86MonBrightnessDown
-MX2 | XF86MonBrightnessUp
-MX3 | XF86AudioMedia
-MX4 | XF86Display
-MX5 | XF86KbdLightOnOff
-MX6 | XF86KbdBrightnessDown
-MX7 | XF86KbdBrightnessUp
-MX8 | XF86Send
-MX9 | XF86Reply
-MX10 | XF86MailForward
+<table>
+	<thead>
+		<th><td>Key</td><td>Symbol</td></th>
+	</thead>
+	<tbody>
+		<tr><td>L1</td><td>XF86Launch5</td></tr>
+		<tr><td>L2</td><td>XF86Launch6</td></tr>
+		<tr><td>L3</td><td>XF86Launch7</td></tr>
+		<tr><td>L4</td><td>XF86Launch8</td></tr>
+		<tr><td>M1</td><td>XF86Launch1</td></tr>
+		<tr><td>M2</td><td>XF86Launch2</td></tr>
+		<tr><td>M3</td><td>XF86WWW</td></tr>
+		<tr><td>M4</td><td>XF86DOS</td></tr>
+		<tr><td>M5</td><td>XF86ScreenSaver</td></tr>
+		<tr><td>M6</td><td>XF86RotateWindows</td></tr>
+		<tr><td>M7</td><td>XF86TaskPane</td></tr>
+		<tr><td>M8</td><td>XF86Mail</td></tr>
+		<tr><td>M9</td><td>XF86Favorites</td></tr>
+		<tr><td>M10</td><td>XF86MyComputer</td></tr>
+		<tr><td>M11</td><td>XF86Back</td></tr>
+		<tr><td>M12</td><td>XF86Forward</td></tr>
+		<tr><td>MX1</td><td>XF86MonBrightnessDown</td></tr>
+		<tr><td>MX2</td><td>XF86MonBrightnessUp</td></tr>
+		<tr><td>MX3</td><td>XF86AudioMedia</td></tr>
+		<tr><td>MX4</td><td>XF86Display</td></tr>
+		<tr><td>MX5</td><td>XF86KbdLightOnOff</td></tr>
+		<tr><td>MX6</td><td>XF86KbdBrightnessDown</td></tr>
+		<tr><td>MX7</td><td>XF86KbdBrightnessUp</td></tr>
+		<tr><td>MX8</td><td>XF86Send</td></tr>
+		<tr><td>MX9</td><td>XF86Reply</td></tr>
+		<tr><td>MX10</td><td>XF86MailForward</td></tr>
+	</tbody>
+</table>
