@@ -99,7 +99,7 @@ Color specification:
 The key mappings are as follows:
 <table>
 	<thead>
-		<th><td>Key</td><td>Symbol</td></th>
+		<tr><th>Key</th><th>Symbol</th></tr>
 	</thead>
 	<tbody>
 		<tr><td>L1</td><td>XF86Launch5</td></tr>
