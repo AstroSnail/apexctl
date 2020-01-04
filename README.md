@@ -98,7 +98,7 @@ Color specification:
 
 The key mappings are as follows:
 Key|Symbol
--:|:-
+---:|:---
 L1|XF86Launch5
 L2|XF86Launch6
 L3|XF86Launch7
