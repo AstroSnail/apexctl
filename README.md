@@ -8,7 +8,6 @@
  - [Build](#build)
  - [Installation](#install)
  - [Usage](#usage)
- - [Advanced XKB Configuration](#advanced)
 
 ## <a id="deps"></a> Dependencies
 
@@ -59,16 +58,6 @@ Copy `config/00-apexctl.rules` to `/etc/udev/rules.d/` and rename it to your pre
 
 If you use X11, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
 
-Copy `config/steelseries` to `~/.xkb/symbols/`.
-If you use X11, then add the following line to your `~/.xinitrc` (or any other startup file you use):
-```
-setxkbmap -print | sed '/xkb_symbols/s/"/+steelseries(apex)"/2' | xkbcomp -I"$HOME/.xkb" - $DISPLAY
-```
-You may adjust the `setxkbmap` command to your preference.
-Adjust `steelseries(apex)` to your model if it exists in this file. (currently only apex exists)  
-If you use a Wayland compositor that implements libxkbcommon, then configuring the compositor is up to you.  
-**TODO:** add examples
-
 ## <a id="usage"></a> Usage
 
 ```
@@ -107,33 +96,39 @@ Color specification:
   0                 SPECIAL: Does not affect the zone
 ```
 
-## <a id="advanced"></a> Advanced XKB Configuration
-
-If you're familiar with XKB configuration files (this is beyond just setxkbmap), you might want to try making your own rules.
-For example, a fairly minimal configuration might look like this:
-
-`myrules`
-```
-! model    =  keycodes  types     compat
-  *        =  evdev     complete  complete
-
-! model    =  symbols
-  *        =  pc+%l%(v)+compose(caps)
-  apex300  = +steelseries(apex)
-
-! model    =  geometry
-  apex300  =  steelseries(apex300)
-  *        =  pc(pc104)
-```
-`myrules.lst`
-```
-! model
-  apex300  SteelSeries Apex 300 (Apex RAW)
-```
-
-Add these files to `~/.xkb/rules/`, and add the following line to your `~/.xinitrc` instead:
-```
-setxkbmap -I "$HOME/.xkb" -print -rules myrules | xkbcomp -I"$HOME/.xkb" - $DISPLAY
-```
-
-You may specify layout and variant in the `setxkbmap` command, but options (such as `compose:caps`) won't work. You will need to add those to the rules manually.
+The key mappings are as follows:
+<table>
+	<thead>
+		<tr><th>Key</th><th>Symbol</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>L1</td><td>XF86Launch5</td></tr>
+		<tr><td>L2</td><td>XF86Launch6</td></tr>
+		<tr><td>L3</td><td>XF86Launch7</td></tr>
+		<tr><td>L4</td><td>XF86Launch8</td></tr>
+		<tr><td>&#x2196;</td><td>XF86ScrollUp</td></tr>
+		<tr><td>&#x2197;</td><td>XF86ScrollDown</td></tr>
+		<tr><td>MX1</td><td>XF86MonBrightnessDown</td></tr>
+		<tr><td>MX2</td><td>XF86MonBrightnessUp</td></tr>
+		<tr><td>MX3</td><td>XF86AudioMedia</td></tr>
+		<tr><td>MX4</td><td>XF86Display</td></tr>
+		<tr><td>MX5</td><td>XF86KbdLightOnOff</td></tr>
+		<tr><td>MX6</td><td>XF86KbdBrightnessDown</td></tr>
+		<tr><td>MX7</td><td>XF86KbdBrightnessUp</td></tr>
+		<tr><td>MX8</td><td>XF86Send</td></tr>
+		<tr><td>MX9</td><td>XF86Reply</td></tr>
+		<tr><td>MX10</td><td>XF86MailForward</td></tr>
+		<tr><td>M1</td><td>XF86Launch1</td></tr>
+		<tr><td>M2</td><td>XF86Launch2</td></tr>
+		<tr><td>M3</td><td>XF86WWW</td></tr>
+		<tr><td>M4</td><td>XF86DOS</td></tr>
+		<tr><td>M5</td><td>XF86ScreenSaver</td></tr>
+		<tr><td>M6</td><td>XF86RotateWindows</td></tr>
+		<tr><td>M7</td><td>XF86TaskPane</td></tr>
+		<tr><td>M8</td><td>XF86Mail</td></tr>
+		<tr><td>M9</td><td>XF86Favorites</td></tr>
+		<tr><td>M10</td><td>XF86MyComputer</td></tr>
+		<tr><td>M11</td><td>XF86Back</td></tr>
+		<tr><td>M12</td><td>XF86Forward</td></tr>
+	</tbody>
+</table>
