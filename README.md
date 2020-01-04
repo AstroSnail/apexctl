@@ -95,3 +95,33 @@ Color specification:
   A        4        Equivalent to FFFFFF4
   0                 SPECIAL: Does not affect the zone
 ```
+
+The key mappings are as follows:
+Key|Symbol
+-:|:-
+L1|XF86Launch5
+L2|XF86Launch6
+L3|XF86Launch7
+L4|XF86Launch8
+M1|XF86Launch1
+M2|XF86Launch2
+M3|XF86WWW
+M4|XF86DOS
+M5|XF86ScreenSaver
+M6|XF86RotateWindows
+M7|XF86TaskPane
+M8|XF86Mail
+M9|XF86Favorites
+M10|XF86MyComputer
+M11|XF86Back
+M12|XF86Forward
+MX1|XF86MonBrightnessDown
+MX2|XF86MonBrightnessUp
+MX3|XF86AudioMedia
+MX4|XF86Display
+MX5|XF86KbdLightOnOff
+MX6|XF86KbdBrightnessDown
+MX7|XF86KbdBrightnessUp
+MX8|XF86Send
+MX9|XF86Reply
+MX10|XF86MailForward
