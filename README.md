@@ -2,7 +2,8 @@
 
 ### Control SteelSeries Apex keyboards on GNU/Linux!
 
-*Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros]*
+*Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros]*  
+*Works with the Apex RAW, Apex, Apex 350, and Apex 300*
 
  - [Dependencies](#dependencies)
  - [Build](#build)
