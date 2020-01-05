@@ -282,8 +282,6 @@ int cmd_bright (
 		return -1;
 	}
 
-	data[0] = ID_BRIGHT;
-
 	uint8_t zone, brightness;
 	int ret;
 
@@ -293,6 +291,7 @@ int cmd_bright (
 		return -1;
 	}
 
+	data[0] = ID_BRIGHT;
 	data[1] = zone;
 	data[2] = brightness;
 
@@ -334,7 +333,6 @@ int cmd_colors (
 	for (i = 0; i < argc; ++i) {
 		// Default: white, brightest
 		uint8_t red = 0xFF, green = 0xFF, blue = 0xFF, brightness = 8;
-		size_t offset;
 		int ret;
 		char temp [7] = "";
 
@@ -384,7 +382,7 @@ int cmd_colors (
 			return -1;
 		}
 
-		offset = 4 * i + 2;
+		size_t offset = 4 * i + 2;
 		data[offset + 0] = red;
 		data[offset + 1] = green;
 		data[offset + 2] = blue;
