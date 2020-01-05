@@ -18,7 +18,7 @@
 ### Arch:
 
 ```
-pacman -S --needed hidapi pkgconf
+pacman -S --needed base-devel pkgconf hidapi
 ```
 
 **TODO:** add more distros  
