@@ -1,10 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ApexCtl: Control SteelSeries Apex and Apex RAW keyboards on GNU/Linux!
-//
-// Rewrite of a utility with the same name:
-//   <https://github.com/tuxmark5/ApexCtl>
-// With some influence from Apex-Macros:
-//   <https://github.com/Gibtnix/Apex-Macros>
+// ApexCtl: Control SteelSeries Apex keyboards on GNU/Linux!
 //
 // Copyright 2020 AstroSnail
 //

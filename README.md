@@ -1,35 +1,31 @@
 # ApexCtl
 
-### Control SteelSeries Apex and Apex RAW keyboards on GNU/Linux!
+### Control SteelSeries Apex keyboards on GNU/Linux!
 
-*Rewrite of a utility with the [same name](https://github.com/tuxmark5/ApexCtl), with some influence from [Apex-Macros](https://github.com/Gibtnix/Apex-Macros)*
+*Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros].*  
+*Works with the SteelSeries Apex RAW, Apex, Apex 350 and 300 keyboards.*
 
- - [Dependencies](#deps)
+ - [Dependencies](#dependencies)
  - [Build](#build)
- - [Installation](#install)
+ - [Installation](#installation)
  - [Usage](#usage)
 
-## <a id="deps"></a> Dependencies
+## Dependencies
 
- - hidapi
- - libusb (if the hidapi-hidraw implementation is unavailable or broken)
+ - make
  - pkgconf
+ - hidapi
 
 ### Arch:
 
 ```
-pacman -S --needed hidapi pkgconf
+pacman -S --needed base-devel pkgconf hidapi
 ```
 
-### Fedora:
+**TODO:** add more distros  
+ApexCtl has been reported to work in Fedora ([#2][i2])
 
-```
-yum install hidapi-devel pkgconf
-```
-
-**TODO:** add more distros
-
-## <a id="build"></a> Build
+## Build
 
 ```
 git clone https://github.com/AstroSnail/apexctl
@@ -37,16 +33,15 @@ cd apexctl
 make
 ```
 
-Options can be specified after the `make` command. For example:
+Options can be specified at the end of the `make` command. For example:
 ```
 make ENABLE_DATA_PRINT=1 HIDAPI_IMPL=hidapi-hidraw
 ```
 You can find the options and their defaults at the top of the Makefile.
 
-## <a id="install"></a> Installation
+## Installation
 
-*All installation is done manually.*  
-**TODO:** Rewrite [the old scripts](https://github.com/tuxmark5/ApexCtl/blob/master/makefile)
+*All installation is done manually.*
 
 Copy the `apexctl` binary to `/usr/local/sbin/`.
 
@@ -58,7 +53,9 @@ Copy `config/00-apexctl.rules` to `/etc/udev/rules.d/` and rename it to your pre
 
 If you use X11, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
 
-## <a id="usage"></a> Usage
+**TODO:** Rewrite [the old scripts][oldscripts]
+
+## Usage
 
 ```
 $ apexctl
@@ -96,7 +93,7 @@ Color specification:
   0                 SPECIAL: Does not affect the zone
 ```
 
-The key mappings are as follows:
+To help you configure your hotkeys, the key mappings are as follows:
 <table>
 	<thead>
 		<tr><th>Key</th><th>Symbol</th></tr>
@@ -132,3 +129,8 @@ The key mappings are as follows:
 		<tr><td>M12</td><td>XF86Forward</td></tr>
 	</tbody>
 </table>
+
+[ApexCtl]: https://github.com/tuxmark5/ApexCtl
+[ApexMacros]: https://github.com/Gibtnix/Apex-Macros
+[i2]: https://github.com/AstroSnail/apexctl/issues/2
+[oldscripts]: https://github.com/tuxmark5/ApexCtl/blob/master/makefile
