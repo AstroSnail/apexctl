@@ -22,7 +22,7 @@ pacman -S --needed base-devel pkgconf hidapi
 ```
 
 **TODO:** add more distros  
-ApexCtl has been reported to work in Fedora
+ApexCtl has been reported to work in Fedora (#2)
 
 ## Build
 
