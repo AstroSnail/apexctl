@@ -4,10 +4,10 @@
 
 *Rewrite of a utility with the [same name](https://github.com/tuxmark5/ApexCtl), with some influence from [Apex-Macros](https://github.com/Gibtnix/Apex-Macros)*
 
- - [Dependencies](#-dependencies)
- - [Build](#-build)
- - [Installation](#-installation)
- - [Usage](#-usage)
+ - [Dependencies](#dependencies)
+ - [Build](#build)
+ - [Installation](#installation)
+ - [Usage](#usage)
 
 ## Dependencies
 
