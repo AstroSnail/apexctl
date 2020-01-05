@@ -2,3 +2,4 @@ ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1200", RUN{program}+=
 ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1202", RUN{program}+="/usr/local/sbin/apexctl keys on"
 ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1206", RUN{program}+="/usr/local/sbin/apexctl keys on"
 ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1208", RUN{program}+="/usr/local/sbin/apexctl keys on"
+ACTION=="add", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1600", RUN{program}+="/usr/local/sbin/apexctl keys on"
