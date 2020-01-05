@@ -1,6 +1,6 @@
 # ApexCtl
 
-### Control SteelSeries Apex and Apex RAW keyboards on GNU/Linux!
+### Control SteelSeries Apex keyboards on GNU/Linux!
 
 *Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros]*
 

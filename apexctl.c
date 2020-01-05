@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ApexCtl: Control SteelSeries Apex and Apex RAW keyboards on GNU/Linux!
+// ApexCtl: Control SteelSeries Apex keyboards on GNU/Linux!
 //
 // Rewrite of a utility with the same name:
 //   <https://github.com/tuxmark5/ApexCtl>
