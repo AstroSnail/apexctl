@@ -2,7 +2,7 @@
 
 ### Control SteelSeries Apex and Apex RAW keyboards on GNU/Linux!
 
-*Rewrite of a utility with the [same name](https://github.com/tuxmark5/ApexCtl), with some influence from [Apex-Macros](https://github.com/Gibtnix/Apex-Macros)*
+*Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros]*
 
  - [Dependencies](#dependencies)
  - [Build](#build)
@@ -22,7 +22,7 @@ pacman -S --needed base-devel pkgconf hidapi
 ```
 
 **TODO:** add more distros  
-ApexCtl has been reported to work in Fedora (#2)
+ApexCtl has been reported to work in Fedora ([#2][i2])
 
 ## Build
 
@@ -52,7 +52,7 @@ Copy `config/00-apexctl.rules` to `/etc/udev/rules.d/` and rename it to your pre
 
 If you use X11, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
 
-**TODO:** Rewrite [the old scripts](https://github.com/tuxmark5/ApexCtl/blob/master/makefile)
+**TODO:** Rewrite [the old scripts][oldscripts]
 
 ## Usage
 
@@ -128,3 +128,8 @@ To help you configure your hotkeys, the key mappings are as follows:
 		<tr><td>M12</td><td>XF86Forward</td></tr>
 	</tbody>
 </table>
+
+[ApexCtl]: https://github.com/tuxmark5/ApexCtl
+[ApexMacros]: https://github.com/Gibtnix/Apex-Macros
+[i2]: https://github.com/AstroSnail/apexctl/issues/2
+[oldscripts]: https://github.com/tuxmark5/ApexCtl/blob/master/makefile
