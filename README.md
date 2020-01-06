@@ -51,7 +51,7 @@ To apply immediately, run `udevadm trigger`.
 
 Copy `config/00-apexctl.rules` to `/etc/udev/rules.d/` and rename it to your preference.
 
-If you use X11, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
+If you use Xorg, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
 
 **TODO:** Rewrite [the old scripts][oldscripts]
 
