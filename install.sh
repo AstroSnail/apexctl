@@ -47,7 +47,7 @@ case ":$PATH:" in
 	(*:"$BINDIR":*)
 		;;
 	(*)
-		echo 'It appears '"BINDIR"' is not in your $PATH'
+		echo 'It appears `'"$BINDIR"\'' is not in your $PATH'
 		echo 'Either add it to your $PATH in your shell profile,'
 		echo 'or set $BINDIR to somewhere in your $PATH when you run this installer.'
 		echo 'Example: BINDIR=/usr/sbin ./install.sh'
