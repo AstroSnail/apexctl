@@ -138,4 +138,3 @@ To help you configure your hotkeys, the key mappings are as follows:
 [ApexMacros]: https://github.com/Gibtnix/Apex-Macros
 [i2]: https://github.com/AstroSnail/apexctl/issues/2
 [i4]: https://github.com/AstroSnail/apexctl/issues/4
-[oldscripts]: https://github.com/tuxmark5/ApexCtl/blob/master/makefile
