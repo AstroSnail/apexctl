@@ -51,7 +51,7 @@ To apply immediately, run `udevadm trigger`.
 
 Copy `config/00-apexctl.rules` to `/etc/udev/rules.d/` and rename it to your preference.
 
-If you use X11, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
+If you use Xorg, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
 
 **TODO:** Rewrite [the old scripts][oldscripts]
 
@@ -105,16 +105,16 @@ To help you configure your hotkeys, the key mappings are as follows:
 		<tr><td>L4</td><td>XF86Launch8</td></tr>
 		<tr><td>&#x2196;</td><td>XF86ScrollUp</td></tr>
 		<tr><td>&#x2197;</td><td>XF86ScrollDown</td></tr>
-		<tr><td>MX1</td><td>XF86MonBrightnessDown</td></tr>
-		<tr><td>MX2</td><td>XF86MonBrightnessUp</td></tr>
-		<tr><td>MX3</td><td>XF86AudioMedia</td></tr>
-		<tr><td>MX4</td><td>XF86Display</td></tr>
-		<tr><td>MX5</td><td>XF86KbdLightOnOff</td></tr>
-		<tr><td>MX6</td><td>XF86KbdBrightnessDown</td></tr>
-		<tr><td>MX7</td><td>XF86KbdBrightnessUp</td></tr>
-		<tr><td>MX8</td><td>XF86Send</td></tr>
-		<tr><td>MX9</td><td>XF86Reply</td></tr>
-		<tr><td>MX10</td><td>XF86MailForward</td></tr>
+		<tr><td>MX1</td><td>XF86AudioMedia</td></tr>
+		<tr><td>MX2</td><td>XF86Display</td></tr>
+		<tr><td>MX3</td><td>XF86KbdLightOnOff</td></tr>
+		<tr><td>MX4</td><td>XF86KbdBrightnessDown</td></tr>
+		<tr><td>MX5</td><td>XF86KbdBrightnessUp</td></tr>
+		<tr><td>MX6</td><td>XF86Reply</td></tr>
+		<tr><td>MX7/td><td>XF86MailForward</td></tr>
+		<tr><td>MX8/td><td>XF86Save</td></tr>
+		<tr><td>MX9/td><td>XF86Documents</td></tr>
+		<tr><td>MX10/td><td>XF86Battery</td></tr>
 		<tr><td>M1</td><td>XF86Launch1</td></tr>
 		<tr><td>M2</td><td>XF86Launch2</td></tr>
 		<tr><td>M3</td><td>XF86WWW</td></tr>
