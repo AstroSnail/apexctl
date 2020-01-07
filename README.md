@@ -12,6 +12,7 @@
 
 ## Dependencies
 
+ - udev
  - make
  - pkgconf
  - hidapi
@@ -23,7 +24,7 @@ pacman -S --needed base-devel pkgconf hidapi
 ```
 
 **TODO:** add more distros  
-ApexCtl has been reported to work in Fedora ([#2][i2])
+ApexCtl has been reported to work in Fedora ([#2][i2]) and Ubuntu ([#4][i4])
 
 ## Build
 
@@ -41,7 +42,7 @@ You can find the options and their defaults at the top of the Makefile.
 
 ## Installation
 
-*All installation is done manually.*
+*All installation is done manually. You can create directories which are missing.*
 
 Copy the `apexctl` binary to `/usr/local/sbin/`.
 
@@ -133,4 +134,5 @@ To help you configure your hotkeys, the key mappings are as follows:
 [ApexCtl]: https://github.com/tuxmark5/ApexCtl
 [ApexMacros]: https://github.com/Gibtnix/Apex-Macros
 [i2]: https://github.com/AstroSnail/apexctl/issues/2
+[i4]: https://github.com/AstroSnail/apexctl/issues/4
 [oldscripts]: https://github.com/tuxmark5/ApexCtl/blob/master/makefile
