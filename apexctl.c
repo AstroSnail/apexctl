@@ -58,6 +58,7 @@ int usb_setup (
 		0x1202, // Apex
 		0x1206, // Apex 350
 		0x1208, // Apex 300
+		0x1600, // Apex M800
 	};
 	size_t i, n = ARRAY_LEN(products);
 
