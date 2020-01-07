@@ -44,15 +44,15 @@ You can find the options and their defaults at the top of the Makefile.
 
 *All installation is done manually. You can create directories which are missing.*
 
-Copy the `apexctl` binary to `/usr/local/sbin/`.
+Copy the `apexctl` binary into `/usr/local/sbin/`.
 
-Copy `config/00-apex.hwdb` to `/etc/udev/hwdb.d/` and rename it to your preference.
+Copy `config/00-apex.hwdb` into `/etc/udev/hwdb.d/` and rename it to your preference.
 Then run `udevadm hwdb --update` or `systemd-hwdb update`.
 To apply immediately, run `udevadm trigger`.
 
-Copy `config/00-apexctl.rules` to `/etc/udev/rules.d/` and rename it to your preference.
+Copy `config/00-apexctl.rules` into `/etc/udev/rules.d/` and rename it to your preference.
 
-If you use Xorg, copy `config/00-apex.conf` to `/etc/X11/xorg.conf.d/` and rename it to your preference.
+If you use Xorg, copy `config/00-apex.conf` into `/etc/X11/xorg.conf.d/` and rename it to your preference.
 
 **TODO:** Rewrite [the old scripts][oldscripts]
 
