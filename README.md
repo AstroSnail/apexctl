@@ -111,10 +111,10 @@ To help you configure your hotkeys, the key mappings are as follows:
 		<tr><td>MX4</td><td>XF86KbdBrightnessDown</td></tr>
 		<tr><td>MX5</td><td>XF86KbdBrightnessUp</td></tr>
 		<tr><td>MX6</td><td>XF86Reply</td></tr>
-		<tr><td>MX7/td><td>XF86MailForward</td></tr>
-		<tr><td>MX8/td><td>XF86Save</td></tr>
-		<tr><td>MX9/td><td>XF86Documents</td></tr>
-		<tr><td>MX10/td><td>XF86Battery</td></tr>
+		<tr><td>MX7</td><td>XF86MailForward</td></tr>
+		<tr><td>MX8</td><td>XF86Save</td></tr>
+		<tr><td>MX9</td><td>XF86Documents</td></tr>
+		<tr><td>MX10</td><td>XF86Battery</td></tr>
 		<tr><td>M1</td><td>XF86Launch1</td></tr>
 		<tr><td>M2</td><td>XF86Launch2</td></tr>
 		<tr><td>M3</td><td>XF86WWW</td></tr>
