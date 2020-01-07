@@ -13,3 +13,9 @@ apexctl: apexctl.c
 
 clean:
 	rm apexctl
+
+install:
+	./install.sh
+
+uninstall:
+	./install.sh -u
