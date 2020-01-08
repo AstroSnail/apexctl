@@ -7,8 +7,6 @@ UDEVRULESDIR="${UDEVRULESDIR:-"/etc/udev/rules.d"}"
 USEXORG="$USEXORG"
 XORGCONFDIR="${XORGCONFDIR:-"/etc/X11/xorg.conf.d"}"
 
-cd "$(dirname "$0")"
-
 install () {(
 	set -ex
 
