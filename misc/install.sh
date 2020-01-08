@@ -39,7 +39,7 @@ uninstall () {(
 action=install
 if [ "$1" = "-u" ]; then action=uninstall; fi
 
-if [ -n "$DISPLAY" ]; then USEXORG=y; fi
+if [ -z "$USEXORG" ] && [ -n "$DISPLAY" ]; then USEXORG=y; fi
 
 case ":$PATH:" in
 	(*:"$BINDIR":*)
