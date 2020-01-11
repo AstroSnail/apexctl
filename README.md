@@ -141,11 +141,11 @@ To help you configure your hotkeys, the default key mappings are as follows:
 	</tbody>
 </table>
 
-If you don't like these mappings, you can change them up with the provided
-`config/extra/Xmodmap` file. Copy this file to `~/.Xmodmap` (or append
-its contents if it already exists) and add `xmodmap ~/.Xmodmap` to your init
-file. (usually `~/.xinitrc`) (**TODO:** Some display managers automatically load
-`~/.Xmodmap`? Which ones?)
+If you you use Xorg and you don't like these mappings, you can change them up
+with the provided `config/extra/Xmodmap` file. Copy this file to `~/.Xmodmap`
+(or append its contents if it already exists) and add `xmodmap ~/.Xmodmap` to
+your init file. (usually `~/.xinitrc`) (**TODO:** Some display managers
+automatically load `~/.Xmodmap`? Which ones?)
 
 If you do this the key mappings will instead be as follows:
 
@@ -186,6 +186,9 @@ If you do this the key mappings will instead be as follows:
 </table>
 
 You can modify `config/extra/Xmodmap` to your preference before you install it.
+
+If you use Wayland and you don't like the default mappings, you'll have more
+luck with the Advanced configuration below.
 
 ## Advanced
 
