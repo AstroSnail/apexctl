@@ -1,0 +1,32 @@
+! L1-L4
+keycode 192 = XF86Launch1
+keycode 193 = XF86Launch2
+keycode 194 = XF86Launch3
+keycode 195 = XF86Launch4
+! Up-Left and Up-Right
+keycode 185 = XF86Back
+keycode 186 = XF86Forward
+! MX1-MX10
+keycode 234 = F25
+keycode 235 = F26
+keycode 236 = F27
+keycode 237 = F28
+keycode 238 = F29
+keycode 240 = F30
+keycode 241 = F31
+keycode 242 = F32
+keycode 243 = F33
+keycode 244 = F34
+! M1-M12
+keycode 156 = F13
+keycode 157 = F14
+keycode 158 = F15
+keycode 159 = F16
+keycode 160 = F17
+keycode 161 = F18
+keycode 162 = F19
+keycode 163 = F20
+keycode 164 = F21
+keycode 165 = F22
+keycode 166 = F23
+keycode 167 = F24

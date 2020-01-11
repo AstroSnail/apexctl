@@ -27,7 +27,7 @@
 pacman -S --needed base-devel pkgconf hidapi
 ```
 
-**TODO:** add more distros  
+**TODO:** Add more distros  
 ApexCtl has been reported to work in Fedora ([#2][i2]) and Ubuntu ([#4][i4])
 
 [i2]: https://github.com/AstroSnail/apexctl/issues/2
@@ -141,25 +141,14 @@ To help you configure your hotkeys, the default key mappings are as follows:
 	</tbody>
 </table>
 
-## Advanced
+If you don't like these mappings, you can change them up with the provided
+`config/extra/Xmodmap` file. Copy this file to `~/.Xmodmap` (or append
+its contents if it already exists) and add `xmodmap ~/.Xmodmap` to your init
+file. (usually `~/.xinitrc`) (**TODO:** Some display managers automatically load
+`~/.Xmodmap`? Which ones?)
 
-If you don't like the default mappings and want to configure them yourself,
-there is a way to do that, but it'll take some work, skill, and probably luck.
+If you do this the key mappings will instead be as follows:
 
-In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.
-
- - Install `00-apex.hwdb` as described in [Installation](#installation)
-
- - Make a new directory `~/.xkb/` and copy `config/extra/rules/` and `config/extra/symbols/` into it.
-
- - If you use Xorg, add `setxkbmap -I "$HOME/.xkb" -print -rules apex | xkbcomp -I"$HOME/.xkb" - "$DISPLAY"` to an init file. (usually `~/.xinitrc`)
- - - You can modify the setxkbmap command to your liking. For example: `setxkbmap -I "$HOME/.xkb" -print -rules apex us colemak compose:menu`
- - - If you want to use different options, you'll need to modify the files in `config/extra/rules/`. They have instructions inside.
- - - If you use another keyboard layout manager, it's up to you to figure out how to make it work.
-
- - If you use Wayland, your compositor will need to implement libxkbcommon, and it's up to you to configure it. (**TODO:** add examples)
-
-Once you're done, the key mappings will now be as follows:
 <table>
 	<thead>
 		<tr><th>Key</th><th>Symbol</th></tr>
@@ -196,7 +185,28 @@ Once you're done, the key mappings will now be as follows:
 	</tbody>
 </table>
 
-If you wish to use different mappings, you can modify
+You can modify `config/extra/Xmodmap` to your preference before you install it.
+
+## Advanced
+
+If you want more control over the mappings (or plain don't like xmodmap)
+there is a way using XKB, but it'll take some work, skill, and probably luck.
+
+In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.
+
+ - Install `00-apex.hwdb` as described in [Installation](#installation)
+
+ - Make a new directory `~/.xkb/` and copy `config/extra/rules/` and `config/extra/symbols/` into it.
+
+ - If you use Xorg, add `setxkbmap -I "$HOME/.xkb" -print -rules apex | xkbcomp -I"$HOME/.xkb" - "$DISPLAY"` to an init file. (usually `~/.xinitrc`)
+ - - You can modify the setxkbmap command to your liking. For example: `setxkbmap -I "$HOME/.xkb" -print -rules apex us colemak compose:menu`
+ - - If you want to use different options, you'll need to modify the files in `config/extra/rules/`. They have instructions inside.
+ - - If you use another keyboard layout manager, it's up to you to figure out how to make it work.
+
+ - If you use Wayland, your compositor will need to implement libxkbcommon, and it's up to you to configure it. (**TODO:** Add examples)
+
+Once you're done, the key mappings will now be like the second table above. If
+you wish to use different mappings, you can modify
 `config/extra/symbols/steelseries` before you install it.
 
 Be aware that Xorg appears to only support F-keys up to F35.
