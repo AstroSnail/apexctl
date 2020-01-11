@@ -146,8 +146,9 @@ To help you configure your hotkeys, the default key mappings are as follows:
 If you don't like the default mappings and want to configure them yourself,
 there is a way to do that, but it'll take some work, skill, and probably luck.
 
- - In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.
- - - Install `00-apex.hwdb` as described in [Installation](#installation)
+In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.
+
+ - Install `00-apex.hwdb` as described in [Installation](#installation)
 
  - Make a new directory `~/.xkb/` and copy `config/extra/rules/` and `config/extra/symbols/` into it.
 
