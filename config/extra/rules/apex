@@ -1,0 +1,24 @@
+! model  =  keycodes  types     compat
+  *      =  evdev     complete  complete
+
+! model    =  symbols
+  *        =  pc+%l%(v)+inet(evdev)
+  apex300  = +steelseries(apex)
+
+! model    =  geometry
+  apex300  =  steelseries(apex300)
+  *        =  pc(pc105)
+
+! option        =  symbols
+  compose:menu  = +compose(menu)
+// If you want to give options to setxkbmap like you would normally do,
+// you have some work to do. You can copy the options you want from
+// /usr/share/X11/xkb/rules/evdev under "! option = symbols"
+// like you see above.
+// After that, you need to modify the apex.lst file, and add a corresponding
+// entry there. You'll find instructions in that file.
+//
+// If you don't want to duplicate work however, I recommend adding the
+// options directly to model '*'. For example:
+// ! model = symbols
+//   *     = pc+%l%(v)+inet(evdev)+compose(menu)
