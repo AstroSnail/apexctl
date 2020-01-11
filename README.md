@@ -157,7 +157,7 @@ In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.
  - - If you want to use different options, you'll need to modify the files in `config/extra/rules/`. They have instructions inside.
  - - If you use another keyboard layout manager, it's up to you to figure out how to make it work.
 
- - If you use Wayland, it'll need to implement libxkbcommon, and it's up to you to configure your compositor to read the configs. (**TODO:** add examples)
+ - If you use Wayland, your compositor will need to implement libxkbcommon, and it's up to you to configure it. (**TODO:** add examples)
 
 Once you're done, the key mappings will now be as follows:
 <table>
