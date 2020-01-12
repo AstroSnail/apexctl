@@ -7,7 +7,7 @@ UDEVRULESDIR="${UDEVRULESDIR:-"/etc/udev/rules.d"}"
 USEXORG="$USEXORG"
 XORGCONFDIR="${XORGCONFDIR:-"/etc/X11/xorg.conf.d"}"
 
-install () {(
+apex_install () {(
 	set -ex
 
 	mkdir -p "$BINDIR"
@@ -24,7 +24,7 @@ install () {(
 	udevadm trigger
 )}
 
-uninstall () {(
+apex_uninstall () {(
 	set -ex
 
 	rm -f "$BINDIR/apexctl"
@@ -36,8 +36,8 @@ uninstall () {(
 	udevadm trigger
 )}
 
-action=install
-if [ "$1" = "-u" ]; then action=uninstall; fi
+action=apex_install
+if [ "$1" = "-u" ]; then action=apex_uninstall; fi
 
 if [ -z "$USEXORG" ] && [ -n "$DISPLAY" ]; then USEXORG=y; fi
 
