@@ -15,10 +15,10 @@ install () {(
 	mkdir -p "$UDEVRULESDIR"
 	if [ "$USEXORG" = "y" ]; then mkdir -p "$XORGCONFDIR"; fi
 
-	cp apexctl "$BINDIR/apexctl"
-	cp config/default/00-apex.hwdb "$UDEVHWDBDIR/90-apex.hwdb"
-	cp config/default/00-apexctl.rules "$UDEVRULESDIR/90-apexctl.rules"
-	if [ "$USEXORG" = "y" ]; then cp config/default/00-apex.conf "$XORGCONFDIR/90-apex.conf"; fi
+	install -m755 apexctl "$BINDIR/apexctl"
+	install config/default/00-apex.hwdb "$UDEVHWDBDIR/90-apex.hwdb"
+	install config/default/00-apexctl.rules "$UDEVRULESDIR/90-apexctl.rules"
+	if [ "$USEXORG" = "y" ]; then install config/default/00-apex.conf "$XORGCONFDIR/90-apex.conf"; fi
 
 	udevadm hwdb --update
 	udevadm trigger
