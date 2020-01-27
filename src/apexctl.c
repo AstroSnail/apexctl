@@ -283,7 +283,7 @@ int cmd_bright (
 
 	ret  = util_zone(argv[0], &zone);
 	ret |= util_brightness(argv[1], &brightness);
-	if (ret) {
+	if (ret == FAILURE) {
 		return -1;
 	}
 
@@ -339,7 +339,7 @@ int cmd_colors (
 				continue;
 			} else {
 				ret = util_brightness(argv[i], &brightness);
-				if (ret) {
+				if (ret == FAILURE) {
 					return -1;
 				}
 			}
@@ -347,7 +347,7 @@ int cmd_colors (
 
 		case 4:
 			ret = util_brightness(&argv[i][3], &brightness);
-			if (ret) {
+			if (ret == FAILURE) {
 				return -1;
 			}
 			// Fallthrough
@@ -356,20 +356,20 @@ int cmd_colors (
 			temp[2] = temp[3] = argv[i][1];
 			temp[4] = temp[5] = argv[i][2];
 			ret = util_color(temp, &red, &green, &blue);
-			if (ret) {
+			if (ret == FAILURE) {
 				return -1;
 			}
 			break;
 
 		case 7:
 			ret = util_brightness(&argv[i][6], &brightness);
-			if (ret) {
+			if (ret == FAILURE) {
 				return -1;
 			}
 			// Fallthrough
 		case 6:
 			ret = util_color(argv[i], &red, &green, &blue);
-			if (ret) {
+			if (ret == FAILURE) {
 				return -1;
 			}
 			break;
