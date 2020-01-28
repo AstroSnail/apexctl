@@ -1,45 +1,46 @@
-#!/bin/sh -e
+#!/bin/sh -eu
 
-BINDIR="${BINDIR:-"/usr/local/sbin"}"
-UDEVHWDBDIR="${UDEVHWDBDIR:-"/etc/udev/hwdb.d"}"
-UDEVRULESDIR="${UDEVRULESDIR:-"/etc/udev/rules.d"}"
+BINDIR="${BINDIR:-/usr/local/sbin}"
+UDEVHWDBDIR="${UDEVHWDBDIR:-/etc/udev/hwdb.d}"
+UDEVRULESDIR="${UDEVRULESDIR:-/etc/udev/rules.d}"
 
-USEXORG="$USEXORG"
-XORGCONFDIR="${XORGCONFDIR:-"/etc/X11/xorg.conf.d"}"
+USEXORG=${USEXORG:-}
+DISPLAY=${DISPLAY:-}
+XORGCONFDIR="${XORGCONFDIR:-/etc/X11/xorg.conf.d}"
 
 apex_install () {(
-	set -ex
+	set -eux
 
-	mkdir -p "$BINDIR"
-	mkdir -p "$UDEVHWDBDIR"
-	mkdir -p "$UDEVRULESDIR"
-	if [ "$USEXORG" = "y" ]; then mkdir -p "$XORGCONFDIR"; fi
+	mkdir --parents "$BINDIR"
+	install --mode=0755 apexctl "$BINDIR"/apexctl
 
-	install -m755 apexctl "$BINDIR/apexctl"
-	install config/default/00-apex.hwdb "$UDEVHWDBDIR/90-apex.hwdb"
-	install config/default/00-apexctl.rules "$UDEVRULESDIR/90-apexctl.rules"
-	if [ "$USEXORG" = "y" ]; then install -m644 config/default/00-apex.conf "$XORGCONFDIR/90-apex.conf"; fi
+	mkdir --parents "$UDEVHWDBDIR"
+	install --mode=0644 config/default/00-apex.hwdb "$UDEVHWDBDIR"/90-apex.hwdb
+
+	mkdir --parents "$UDEVRULESDIR"
+	install --mode=0644 config/default/00-apexctl.rules "$UDEVRULESDIR"/90-apexctl.rules
+
+	if [ "$USEXORG" = "y" ]
+	then
+		mkdir --parents "$XORGCONFDIR"
+		install --mode=0644 config/default/00-apex.conf "$XORGCONFDIR"/90-apex.conf
+	fi
 
 	udevadm hwdb --update
 	udevadm trigger
 )}
 
 apex_uninstall () {(
-	set -ex
+	set -eux
 
-	rm -f "$BINDIR/apexctl"
-	rm -f "$UDEVHWDBDIR/90-apex.hwdb"
-	rm -f "$UDEVRULESDIR/90-apexctl.rules"
-	rm -f "$XORGCONFDIR/90-apex.conf"
+	rm --force "$BINDIR"/apexctl
+	rm --force "$UDEVHWDBDIR"/90-apex.hwdb
+	rm --force "$UDEVRULESDIR"/90-apexctl.rules
+	rm --force "$XORGCONFDIR"/90-apex.conf
 
 	udevadm hwdb --update
 	udevadm trigger
 )}
-
-action=apex_install
-if [ "$1" = "-u" ]; then action=apex_uninstall; fi
-
-if [ -z "$USEXORG" ] && [ -n "$DISPLAY" ]; then USEXORG=y; fi
 
 case ":$PATH:" in
 	(*:"$BINDIR":*)
@@ -52,4 +53,7 @@ case ":$PATH:" in
 		exit 1
 esac
 
+action=apex_install
+if [ "${1:-}" = -u ]; then action=apex_uninstall; shift; fi
+if [ -z "$USEXORG" ] && [ -n "$DISPLAY" ]; then USEXORG=y; fi
 $action
