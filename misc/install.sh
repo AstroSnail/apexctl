@@ -1,12 +1,12 @@
 #!/bin/sh -eu
 
-BINDIR="${BINDIR:-/usr/local/sbin}"
-UDEVHWDBDIR="${UDEVHWDBDIR:-/etc/udev/hwdb.d}"
-UDEVRULESDIR="${UDEVRULESDIR:-/etc/udev/rules.d}"
+: ${BINDIR:=/usr/local/sbin}
+: ${UDEVHWDBDIR:=/etc/udev/hwdb.d}
+: ${UDEVRULESDIR:=/etc/udev/rules.d}
 
-USEXORG=${USEXORG:-}
-DISPLAY=${DISPLAY:-}
-XORGCONFDIR="${XORGCONFDIR:-/etc/X11/xorg.conf.d}"
+: ${USEXORG:=}
+: ${DISPLAY:=}
+: ${XORGCONFDIR:=/etc/X11/xorg.conf.d}
 
 apex_install () {(
 	set -eux
