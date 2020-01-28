@@ -8,9 +8,7 @@
 : ${DISPLAY:=}
 : ${XORGCONFDIR:=/etc/X11/xorg.conf.d}
 
-apex_install () {(
-	set -x
-
+apex_install () {
 	mkdir --parents "$BINDIR"
 	install --mode=0755 apexctl "$BINDIR"/apexctl
 
@@ -28,11 +26,9 @@ apex_install () {(
 
 	udevadm hwdb --update
 	udevadm trigger
-)}
+}
 
-apex_uninstall () {(
-	set -x
-
+apex_uninstall () {
 	rm --force "$BINDIR"/apexctl
 	rm --force "$UDEVHWDBDIR"/90-apex.hwdb
 	rm --force "$UDEVRULESDIR"/90-apexctl.rules
@@ -40,7 +36,7 @@ apex_uninstall () {(
 
 	udevadm hwdb --update
 	udevadm trigger
-)}
+}
 
 case ":$PATH:" in
 	(*:"$BINDIR":*)
@@ -56,4 +52,6 @@ esac
 action=apex_install
 if [ "${1:-}" = -u ]; then action=apex_uninstall; shift; fi
 if [ -z "$USEXORG" ] && [ -n "$DISPLAY" ]; then USEXORG=y; fi
+
+set -x
 $action
