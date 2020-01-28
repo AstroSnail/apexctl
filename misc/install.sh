@@ -9,7 +9,7 @@
 : ${XORGCONFDIR:=/etc/X11/xorg.conf.d}
 
 apex_install () {(
-	set -eux
+	set -x
 
 	mkdir --parents "$BINDIR"
 	install --mode=0755 apexctl "$BINDIR"/apexctl
@@ -31,7 +31,7 @@ apex_install () {(
 )}
 
 apex_uninstall () {(
-	set -eux
+	set -x
 
 	rm --force "$BINDIR"/apexctl
 	rm --force "$UDEVHWDBDIR"/90-apex.hwdb
