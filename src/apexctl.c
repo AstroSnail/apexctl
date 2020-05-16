@@ -46,6 +46,14 @@ enum {
 
 #define REPORT_LEN_MAX 32
 
+char const *const supported [] = {
+	"Steelseries Apex RAW",
+	"Steelseries Apex",
+	"Steelseries Apex 350",
+	"Steelseries Apex 300",
+	"Steelseries Apex M800",
+};
+
 ///////////////////////////////////////////////////////////////////////////////
 // This stuff deals with hidapi
 
@@ -515,7 +523,13 @@ int main (
 		if (ret == 0) {
 			usb_put(&device, data, bytes);
 		} else {
-			fputs("Re-run as root!\n", stderr);
+			size_t n = ARRAY_LEN(supported);
+			fputs("Failed to find a supported keyboard.\n", stderr);
+			fputs("Supported models are:\n", stderr);
+			for (size_t i = 0; i < n; ++i) {
+				fprintf(stderr, "  %s\n", supported[i]);
+			}
+			fputs("If you have one of these, try re-running as root.\n", stderr);
 		}
 		usb_cleanup(&device);
 	} else {
