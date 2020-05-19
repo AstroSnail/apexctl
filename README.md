@@ -3,7 +3,7 @@
 ### Control SteelSeries Apex keyboards on GNU/Linux!
 
 *Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros].*  
-*Works with the SteelSeries Apex, Apex RAW, 350, 300 and M800 keyboards.*
+*Works with the SteelSeries Apex, Apex RAW, 350, 300, M800 and Apex 3 keyboards.*
 
  - [Dependencies](#dependencies)
  - [Build](#build)
@@ -24,7 +24,7 @@
 ### Arch:
 
 ```
-pacman -S --needed base-devel pkgconf hidapi
+pacman -S --needed base-devel hidapi
 ```
 
 **TODO:** Add more distros  
