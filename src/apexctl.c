@@ -19,6 +19,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <hidapi.h>
@@ -502,16 +503,16 @@ int main (
 	int _argc,
 	char * * argv
 ) {
-	hid_device * device;
-	uint8_t data [REPORT_LEN_MAX] = {0};
 	size_t argc = _argc;
-	size_t i, n = ARRAY_LEN(commands);
-	int ret = 0;
 
 	if (argc < 2) {
 		help(argv[0]);
 		return 0;
 	}
+
+	uint8_t data [REPORT_LEN_MAX] = {0};
+	size_t i, n = ARRAY_LEN(commands);
+	int ret = 0;
 
 	for (i = 0; i < n; ++i) {
 		if (strcmp(argv[1], commands[i].command) == 0) {
@@ -523,7 +524,9 @@ int main (
 	if (i < n && ret >= 0) {
 		size_t bytes = ret;
 
+		hid_device * device;
 		ret = usb_setup(&device);
+
 		if (ret == 0) {
 			usb_put(&device, data, bytes);
 		} else {
@@ -535,10 +538,11 @@ int main (
 			}
 			fputs("If you have one of these, try re-running as root.\n", stderr);
 		}
+
 		usb_cleanup(&device);
 	} else {
 		help(argv[0]);
 	}
 
-	return ret;
+	return ret ? EXIT_FAILURE : EXIT_SUCCESS;
 }
