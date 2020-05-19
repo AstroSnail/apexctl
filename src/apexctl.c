@@ -46,7 +46,18 @@ enum {
 
 #define REPORT_LEN_MAX 32
 
-char const *const supported [] = {
+uint16_t const steelseries_vendor = 0x1038;
+
+uint16_t const steelseries_products [] = {
+	0x1200, // Apex RAW
+	0x1202, // Apex
+	0x1206, // Apex 350
+	0x1208, // Apex 300
+	0x1600, // Apex M800
+	0x161A, // Apex 3
+};
+
+char const *const steelseries_names [] = {
 	"SteelSeries Apex RAW",
 	"SteelSeries Apex",
 	"SteelSeries Apex 350",
@@ -61,16 +72,7 @@ char const *const supported [] = {
 int usb_setup (
 	hid_device * * device
 ) {
-	uint16_t vendor = 0x1038;
-	uint16_t products [] = {
-		0x1200, // Apex RAW
-		0x1202, // Apex
-		0x1206, // Apex 350
-		0x1208, // Apex 300
-		0x1600, // Apex M800
-		0x161A, // Apex 3
-	};
-	size_t i, n = ARRAY_LEN(products);
+	size_t i, n = ARRAY_LEN(steelseries_products);
 
 	int ret = hid_init();
 	if (ret != 0) {
@@ -78,7 +80,7 @@ int usb_setup (
 	}
 
 	for (i = 0; i < n; ++i) {
-		*device = hid_open(vendor, products[i], 0);
+		*device = hid_open(steelseries_vendor, steelseries_products[i], 0);
 		if (*device != NULL) {
 			break;
 		}
@@ -525,11 +527,11 @@ int main (
 		if (ret == 0) {
 			usb_put(&device, data, bytes);
 		} else {
-			size_t n = ARRAY_LEN(supported);
+			size_t n = ARRAY_LEN(steelseries_names);
 			fputs("Failed to find a supported keyboard.\n", stderr);
 			fputs("Supported models are:\n", stderr);
 			for (size_t i = 0; i < n; ++i) {
-				fprintf(stderr, "  %s\n", supported[i]);
+				fprintf(stderr, "  %s\n", steelseries_names[i]);
 			}
 			fputs("If you have one of these, try re-running as root.\n", stderr);
 		}
