@@ -13,11 +13,7 @@ TARGET=apexctl
 $(TARGET): src/apexctl.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(CPPLIBS) $(LDFLAGS) $? $(LIBS) -o $@
 
-clean:
-	rm $(TARGET)
-
-install:
-	misc/install.sh
-
-uninstall:
-	misc/install.sh -u
+clean:; rm $(TARGET)
+install:; misc/install.sh
+uninstall:; misc/install.sh -u
+.PHONY: clean install uninstall
