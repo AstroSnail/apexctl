@@ -9,19 +9,19 @@
 : "${XORGCONFDIR:=/etc/X11/xorg.conf.d}"
 
 apex_install () {
-	mkdir -p "${BINDIR}"
-	install -m0755 apexctl "${BINDIR}/apexctl"
+	mkdir -p -- "${BINDIR}"
+	install -m0755 -- apexctl "${BINDIR}/apexctl"
 
-	mkdir -p "${UDEVHWDBDIR}"
-	install -m0644 config/default/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
+	mkdir -p -- "${UDEVHWDBDIR}"
+	install -m0644 -- config/default/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
 
-	mkdir -p "${UDEVRULESDIR}"
-	install -m0644 config/default/00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
+	mkdir -p -- "${UDEVRULESDIR}"
+	install -m0644 -- config/default/00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
 
 	if [ "${USEXORG}" = "y" ]
 	then
-		mkdir -p "${XORGCONFDIR}"
-		install -m0644 config/default/00-apex.conf "${XORGCONFDIR}/90-apex.conf"
+		mkdir -p -- "${XORGCONFDIR}"
+		install -m0644 -- config/default/00-apex.conf "${XORGCONFDIR}/90-apex.conf"
 	fi
 
 	udevadm hwdb --update
@@ -29,10 +29,10 @@ apex_install () {
 }
 
 apex_uninstall () {
-	rm -f "${BINDIR}/apexctl"
-	rm -f "${UDEVHWDBDIR}/90-apex.hwdb"
-	rm -f "${UDEVRULESDIR}/90-apexctl.rules"
-	rm -f "${XORGCONFDIR}/90-apex.conf"
+	rm -f -- "${BINDIR}/apexctl"
+	rm -f -- "${UDEVHWDBDIR}/90-apex.hwdb"
+	rm -f -- "${UDEVRULESDIR}/90-apexctl.rules"
+	rm -f -- "${XORGCONFDIR}/90-apex.conf"
 
 	udevadm hwdb --update
 	udevadm trigger
