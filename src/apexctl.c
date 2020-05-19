@@ -47,11 +47,12 @@ enum {
 #define REPORT_LEN_MAX 32
 
 char const *const supported [] = {
-	"Steelseries Apex RAW",
-	"Steelseries Apex",
-	"Steelseries Apex 350",
-	"Steelseries Apex 300",
-	"Steelseries Apex M800",
+	"SteelSeries Apex RAW",
+	"SteelSeries Apex",
+	"SteelSeries Apex 350",
+	"SteelSeries Apex 300",
+	"SteelSeries Apex M800",
+	"SteelSeries Apex 3",
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -67,6 +68,7 @@ int usb_setup (
 		0x1206, // Apex 350
 		0x1208, // Apex 300
 		0x1600, // Apex M800
+		0x161A, // Apex 3
 	};
 	size_t i, n = ARRAY_LEN(products);
 
