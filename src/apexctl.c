@@ -521,7 +521,7 @@ int main (
 		}
 	}
 
-	if (i < n && ret >= 0) {
+	if (i < n && ret > 0) {
 		size_t bytes = ret;
 
 		hid_device * device;
