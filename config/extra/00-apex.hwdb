@@ -1,5 +1,6 @@
 evdev:input:b0003v1038p120[0268]*
 evdev:input:b0003v1038p1600*
+evdev:input:b0003v1038p161A*
 # L1-L4
  KEYBOARD_KEY_0700a8=prog1
  KEYBOARD_KEY_0700a9=prog2
