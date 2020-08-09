@@ -10,18 +10,14 @@ set -eu
 : "${XORGCONFDIR:=/etc/X11/xorg.conf.d}"
 
 apex_install () {
-	mkdir -p -- "${BINDIR}"
+	install -d -- "${BINDIR}" "${UDEVHWDBDIR}" "${UDEVRULESDIR}"
 	install -m0755 -- apexctl "${BINDIR}/apexctl"
-
-	mkdir -p -- "${UDEVHWDBDIR}"
 	install -m0644 -- config/default/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
-
-	mkdir -p -- "${UDEVRULESDIR}"
 	install -m0644 -- config/default/00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
 
 	if [ "${USEXORG}" = "y" ]
 	then
-		mkdir -p -- "${XORGCONFDIR}"
+		install -d -- "${XORGCONFDIR}"
 		install -m0644 -- config/default/00-apex.conf "${XORGCONFDIR}/90-apex.conf"
 	fi
 
