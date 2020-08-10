@@ -22,7 +22,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if HIDAPI_LONG_INCLUDE
+#include <hidapi/hidapi.h>
+#else
 #include <hidapi.h>
+#endif
 
 #define ARRAY_LEN(array) (sizeof (array) / sizeof *(array))
 #define STRINGIFY(e) #e            // Stringifies without expanding
