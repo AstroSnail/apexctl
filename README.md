@@ -57,7 +57,7 @@ sudo make install
 ```
 
 **Maual installation is no longer supported. You may still try, but it's probably not worth it**  
-~~Installation may also be done manually. The instructions are as follows.  ~~
+~~Installation may also be done manually. The instructions are as follows.~~  
 ~~You should create directories which are missing on your system.~~
 
  - ~~Copy the `apexctl` binary into `/usr/local/sbin/`. (or anywhere in your $PATH)~~
