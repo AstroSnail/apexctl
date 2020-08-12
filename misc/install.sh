@@ -13,6 +13,7 @@ set -eu
 : "${XKBDIR:=/etc/X11/xkb}"
 
 : "${IHAVEANALLTERRAINVEHICLE:=n}"
+: "${UDEVRELOAD:=y}"
 
 apex_install () {
 	install -d -- "${BINDIR}" "${UDEVHWDBDIR}" "${UDEVRULESDIR}"
@@ -36,8 +37,11 @@ apex_install () {
 		install -m0644 -- config/default/00-apex.conf "${XORGCONFDIR}/90-apex.conf"
 	fi
 
-	udevadm hwdb --update
-	udevadm trigger
+	if [ "${UDEVRELOAD}" = "y" ]
+	then
+		udevadm hwdb --update
+		udevadm trigger
+	fi
 }
 
 apex_uninstall () {
@@ -49,8 +53,11 @@ apex_uninstall () {
 	rm -f -- "${XKBDIR}/rules/apex.lst"
 	rm -f -- "${XKBDIR}/symbols/steelseries"
 
-	udevadm hwdb --update
-	udevadm trigger
+	if [ "${UDEVRELOAD}" = "y" ]
+	then
+		udevadm hwdb --update
+		udevadm trigger
+	fi
 }
 
 if [ "${IHAVEANALLTERRAINVEHICLE}" != "y" ]
