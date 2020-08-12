@@ -9,11 +9,24 @@ set -eu
 : "${DISPLAY:=}"
 : "${XORGCONFDIR:=/etc/X11/xorg.conf.d}"
 
+: "${ADVANCED:=n}"
+: "${XKBDIR:=/etc/X11/xkb}"
+
 apex_install () {
 	install -d -- "${BINDIR}" "${UDEVHWDBDIR}" "${UDEVRULESDIR}"
 	install -m0755 -- apexctl "${BINDIR}/apexctl"
-	install -m0644 -- config/default/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
 	install -m0644 -- config/default/00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
+
+	if [ "${ADVANCED}" = "y" ]
+	then
+		install -d -- "${XKBDIR}/rules" "${XKBDIR}/symbols"
+		install -m0644 -- config/extra/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
+		install -m0644 -- config/extra/rules/apex "${UDEVHWDBDIR}/rules/apex"
+		install -m0644 -- config/extra/rules/apex.lst "${UDEVHWDBDIR}/rules/apex.lst"
+		install -m0644 -- config/extra/symbols/steelseries "${UDEVHWDBDIR}/symbols/steelseries"
+	else
+		install -m0644 -- config/default/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
+	fi
 
 	if [ "${USEXORG}" = "y" ]
 	then
@@ -30,6 +43,9 @@ apex_uninstall () {
 	rm -f -- "${UDEVHWDBDIR}/90-apex.hwdb"
 	rm -f -- "${UDEVRULESDIR}/90-apexctl.rules"
 	rm -f -- "${XORGCONFDIR}/90-apex.conf"
+	rm -f -- "${XKBDIR}/rules/apex"
+	rm -f -- "${XKBDIR}/rules/apex.lst"
+	rm -f -- "${XKBDIR}/symbols/steelseries"
 
 	udevadm hwdb --update
 	udevadm trigger
