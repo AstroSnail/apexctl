@@ -56,19 +56,19 @@ You can find the options and their defaults at the top of the Makefile.
 sudo make install
 ```
 
-Installation may also be done manually. The instructions are as follows.  
-You should create directories which are missing on your system.
+**Maual installation is no longer supported. You may still try, but it's probably not worth it**  
+~~Installation may also be done manually. The instructions are as follows.  ~~
+~~You should create directories which are missing on your system.~~
 
- - Copy the `apexctl` binary into `/usr/local/sbin/`. (or anywhere in your $PATH)
+ - ~~Copy the `apexctl` binary into `/usr/local/sbin/`. (or anywhere in your $PATH)~~
 
- - Copy `config/default/00-apex.hwdb` into `/etc/udev/hwdb.d/` and rename it to your preference.
- - - Then run `udevadm hwdb --update` or `systemd-hwdb update`.
- - - To apply immediately, run `udevadm trigger`.
+ - ~~Copy `config/default/00-apex.hwdb` into `/etc/udev/hwdb.d/` and rename it to your preference.~~
+ - - ~~Then run `udevadm hwdb --update` or `systemd-hwdb update`.~~
+ - - ~~To apply immediately, run `udevadm trigger`.~~
 
- - Copy `config/default/00-apexctl.rules` into `/etc/udev/rules.d/` and rename it to your preference.
+ - ~~Copy `config/default/00-apexctl.rules` into `/etc/udev/rules.d/` and rename it to your preference.~~
 
- - If you use Xorg, copy `config/default/00-apex.conf` into `/etc/X11/xorg.conf.d/` and rename it to your preference.
-
+ - ~~If you use Xorg, copy `config/default/00-apex.conf` into `/etc/X11/xorg.conf.d/` and rename it to your preference.~~
 ## Usage
 
 ```
@@ -198,11 +198,14 @@ luck with the Advanced configuration below.
 If you want more control over the mappings (or plain don't like xmodmap)
 there is a way using XKB, but it'll take some work, skill, and probably luck.
 
-In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.
+~~In `config/extra/` you'll find a different `00-apex.hwdb` and some extra files.~~
 
- - Install `00-apex.hwdb` as described in [Installation](#installation)
+ - ~~Install `00-apex.hwdb` as described in [Installation](#installation)~~
 
- - Make a new directory `~/.xkb/` and copy `config/extra/rules/` and `config/extra/symbols/` into it.
+ - ~~Make a new directory `~/.xkb/` and copy `config/extra/rules/` and `config/extra/symbols/` into it.~~
+
+ - `sudo make install-advanced`
+ - `ln -s /etc/X11/xkb ~/.xkb`
 
  - If you use Xorg, add `setxkbmap -I "$HOME/.xkb" -print -rules apex | xkbcomp -I"$HOME/.xkb" - "$DISPLAY"` to an init file. (usually `~/.xinitrc`)
  - - You can modify the setxkbmap command to your liking. For example: `setxkbmap -I "$HOME/.xkb" -print -rules apex us colemak compose:menu`

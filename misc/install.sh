@@ -19,6 +19,7 @@ apex_install () {
 	install -d -- "${BINDIR}" "${UDEVHWDBDIR}" "${UDEVRULESDIR}"
 	install -m0755 -- apexctl "${BINDIR}/apexctl"
 	install -m0644 -- config/default/00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
+        sed -i "s/%BINDIR%/${BINDIR}/" "${UDEVRULESDIR}/90-apexctl.rules"
 
 	if [ "${ADVANCED}" = "y" ]
 	then
