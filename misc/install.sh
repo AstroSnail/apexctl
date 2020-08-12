@@ -39,9 +39,9 @@ case ":${PATH}:" in
 	(*:"${BINDIR}":*)
 		;;
 	(*)
-		echo "It appears \`${BINDIR}' is not in your \$PATH"
-		echo "Either add it to your \$PATH in your shell profile,"
-		echo "or set \$BINDIR to somewhere in your \$PATH when you run this installer."
+		echo "It appears \`${BINDIR}' is not in your \$PATH."
+		echo "Either add it to your \$PATH in your shell profile, or set"
+		echo "\$BINDIR to a path in your \$PATH when you run this installer."
 		echo "Example: sudo env BINDIR=/usr/sbin make install"
 		exit 1
 esac
