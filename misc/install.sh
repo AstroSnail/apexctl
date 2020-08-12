@@ -23,9 +23,9 @@ apex_install () {
 	then
 		install -d -- "${XKBDIR}/rules" "${XKBDIR}/symbols"
 		install -m0644 -- config/extra/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
-		install -m0644 -- config/extra/rules/apex "${UDEVHWDBDIR}/rules/apex"
-		install -m0644 -- config/extra/rules/apex.lst "${UDEVHWDBDIR}/rules/apex.lst"
-		install -m0644 -- config/extra/symbols/steelseries "${UDEVHWDBDIR}/symbols/steelseries"
+		install -m0644 -- config/extra/rules/apex "${XKBDIR}/rules/apex"
+		install -m0644 -- config/extra/rules/apex.lst "${XKBDIR}/rules/apex.lst"
+		install -m0644 -- config/extra/symbols/steelseries "${XKBDIR}/symbols/steelseries"
 	else
 		install -m0644 -- config/default/00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
 	fi
