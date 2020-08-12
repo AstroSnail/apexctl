@@ -12,6 +12,8 @@ set -eu
 : "${ADVANCED:=n}"
 : "${XKBDIR:=/etc/X11/xkb}"
 
+: "${IHAVEANALLTERRAINVEHICLE:=n}"
+
 apex_install () {
 	install -d -- "${BINDIR}" "${UDEVHWDBDIR}" "${UDEVRULESDIR}"
 	install -m0755 -- apexctl "${BINDIR}/apexctl"
@@ -51,16 +53,19 @@ apex_uninstall () {
 	udevadm trigger
 }
 
-case ":${PATH}:" in
-	(*:"${BINDIR}":*)
-		;;
-	(*)
-		echo "It appears \`${BINDIR}' is not in your \$PATH."
-		echo "Either add it to your \$PATH in your shell profile, or set"
-		echo "\$BINDIR to a path in your \$PATH when you run this installer."
-		echo "Example: sudo env BINDIR=/usr/sbin make install"
-		exit 1
-esac
+if [ "${IHAVEANALLTERRAINVEHICLE}" != "y" ]
+then
+	case ":${PATH}:" in
+		(*:"${BINDIR}":*)
+			;;
+		(*)
+			echo "It appears \`${BINDIR}' is not in your \$PATH."
+			echo "Either add it to your \$PATH in your shell profile, or set"
+			echo "\$BINDIR to a path in your \$PATH when you run this installer."
+			echo "Example: sudo env BINDIR=/usr/sbin make install"
+			exit 1
+	esac
+fi
 
 action=apex_install
 if [ "${1:-}" = -u ]; then action=apex_uninstall; shift; fi
