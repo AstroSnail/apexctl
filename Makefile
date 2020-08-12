@@ -16,5 +16,6 @@ $(TARGET): src/apexctl.c
 
 clean:; rm $(TARGET)
 install:; misc/install.sh
+install-advanced:; env ADVANCED=y misc/install.sh
 uninstall:; misc/install.sh -u
-.PHONY: clean install uninstall
+.PHONY: clean install install-advanced uninstall
