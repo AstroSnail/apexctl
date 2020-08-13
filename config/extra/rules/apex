@@ -10,6 +10,7 @@
   *        =  pc(pc105)
 
 ! option        =  symbols
+  caps:hyper    = +capslock(hyper)
   compose:menu  = +compose(menu)
 // If you want to give options to setxkbmap like you would normally do,
 // you have some work to do. You can copy the options you want from

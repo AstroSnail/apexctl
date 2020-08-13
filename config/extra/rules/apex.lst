@@ -2,6 +2,8 @@
   apex300  SteelSeries Apex 300 (Apex RAW)
 
 ! option
+  caps          Caps Lock behavior
+  caps:hyper    Make Caps Lock an additional Hyper
   Compose key   Position of Compose key
   compose:menu  Menu
 // Here you can add descriptions to options you might want to use.
