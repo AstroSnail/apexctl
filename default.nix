@@ -21,5 +21,4 @@
     export IHAVEANALLTERRAINVEHICLE=y
     export UDEVRELOAD=n
   '';
-  installTargets = "install";
 }
