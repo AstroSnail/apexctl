@@ -448,12 +448,12 @@ struct {
 		"bright",
 		"Set backlight brightness.",
 		"<zone> <brightness>",
-		"(zone 1-5, brightness 1-8)",
+		"(see below)",
 		cmd_bright
 	},
 	{
 		"save",
-		"[NEW&BUGGY] Save state changed since keyboard power-on",
+		"[NEW&BUGGY] Save state changed since keyboard power-on.",
 		"",
 		"(no arguments)",
 		cmd_save
@@ -484,21 +484,36 @@ void help (
 	for (size_t i = 0; i < n; ++i) {
 		fprintf(stderr, "  %-6s %-19s  %s\n", commands[i].command, commands[i].usage, commands[i].explain);
 	}
-	fputs("\n", stderr);
 
 	fputs(
+		"\n"
+		"Brightness specification:\n"
+		"  The meaning of <zone> will depend on which keyboard you're using.\n"
+		"  For the Apex, zones 1 to 5 set south, east, north, west and logo zones.\n"
+		"  For the Apex RAW, zone 1 is the whole keyboard.\n"
+		"\n"
+		"  <brightness> is a number from 1 to 8.\n"
+		"  1 will turn off the keyboard backlight for the specified zone.\n"
+		"  2 is minimum brightness, 8 is maximum.\n"
+		"\n"
 		"Color specification:\n"
 		"  Up to 5 colors can be specified.\n"
-		"  They set south, east, north, west and logo zones, in that order.\n"
+		"  For the Apex, they set south, east, north, west and logo zones in that order.\n"
+		"  For the Apex RAW, only the first is functional.\n"
 		"  The formats are case-insensitive.\n"
 		"\n"
 		"  Format   Example  Meaning\n"
-		"  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4 (from 1 to 8)\n"
+		"  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4\n"
 		"  RRGGBB   ABCDEF   Equivalent to ABCDEF8\n"
 		"  RGBA     ACE4     Equivalent to AACCEE4\n"
 		"  RGB      ACE      Equivalent to AACCEE8\n"
 		"  A        4        Equivalent to FFFFFF4\n"
-		"  0                 SPECIAL: Does not affect the zone\n",
+		"  0                 SPECIAL: Does not affect the zone\n"
+		"\n"
+		"The colors command may be used to turn off the backlight in all zones:\n"
+		"$ apexctl colors 1 1 1 1 1\n"
+		"After running it, you may use the save command immediately to keep it off the\n"
+		"next time the keyboard is powered on.\n",
 	stderr);
 }
 
@@ -540,7 +555,7 @@ int main (
 			for (size_t i = 0; i < n; ++i) {
 				fprintf(stderr, "  %s\n", steelseries_names[i]);
 			}
-			fputs("If you have one of these, try re-running as root.\n", stderr);
+			fputs("If you're using one of these, try re-running as root.\n", stderr);
 		}
 
 		usb_cleanup(&device);

@@ -87,7 +87,7 @@ Commands:
   keys    Enable or disable extra keys.
   poll    Set polling frequency.
   bright  Set backlight brightness.
-  save    [NEW&BUGGY] Save state changed since keyboard power-on
+  save    [NEW&BUGGY] Save state changed since keyboard power-on.
   colors  Set colors and brightnesses per-zone.
 
 Commands usage:
@@ -95,22 +95,37 @@ Commands usage:
   reboot                      (no arguments)
   keys   <on|off>             
   poll   <frequency>          (125, 250, 500, or 1000)
-  bright <zone> <brightness>  (zone 1-5, brightness 1-8)
+  bright <zone> <brightness>  (see below)
   save                        (no arguments)
   colors <colors>             (see below)
 
+Brightness specification:
+  The meaning of <zone> will depend on which keyboard you're using.
+  For the Apex, zones 1 to 5 set south, east, north, west and logo zones.
+  For the Apex RAW, zone 1 is the whole keyboard.
+
+  <brightness> is a number from 1 to 8.
+  1 will turn off the keyboard backlight for the specified zone.
+  2 is minimum brightness, 8 is maximum.
+
 Color specification:
   Up to 5 colors can be specified.
-  They set south, east, north, west and logo zones, in that order.
+  For the Apex, they set south, east, north, west and logo zones in that order.
+  For the Apex RAW, only the first is functional.
   The formats are case-insensitive.
 
   Format   Example  Meaning
-  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4 (from 1 to 8)
+  RRGGBBA  ABCDEF4  Sets color to triplet #ABCDEF and brightness to 4
   RRGGBB   ABCDEF   Equivalent to ABCDEF8
   RGBA     ACE4     Equivalent to AACCEE4
   RGB      ACE      Equivalent to AACCEE8
   A        4        Equivalent to FFFFFF4
   0                 SPECIAL: Does not affect the zone
+
+The colors command may be used to turn off the backlight in all zones:
+$ apexctl colors 1 1 1 1 1
+After running it, you may use the save command immediately to keep it off the
+next time the keyboard is powered on.
 ```
 
 To help you configure your hotkeys, the default key mappings are as follows:
