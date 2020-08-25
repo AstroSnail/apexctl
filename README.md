@@ -30,8 +30,14 @@
 pacman -S --needed base-devel hidapi
 ```
 
+### Fedora ([#2][i2]):
+
+```
+yum install hidapi-devel pkgconf
+```
+
 **TODO:** Add more distros  
-ApexCtl has been reported to work in Fedora ([#2][i2]) and Ubuntu ([#4][i4])
+In addition to the distros above, ApexCtl has been reported to work in Ubuntu ([#4][i4])
 
 [i2]: https://github.com/AstroSnail/apexctl/issues/2
 [i4]: https://github.com/AstroSnail/apexctl/issues/4
