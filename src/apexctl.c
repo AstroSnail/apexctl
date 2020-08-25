@@ -511,7 +511,7 @@ void help (
 		"  0                 SPECIAL: Does not affect the zone\n"
 		"\n"
 		"The colors command may be used to turn off the backlight in all zones:\n"
-		"$ apexctl colors 1 1 1 1 1\n"
+		"  $ apexctl colors 1 1 1 1 1\n"
 		"After running it, you may use the save command immediately to keep it off the\n"
 		"next time the keyboard is powered on.\n",
 	stderr);

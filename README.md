@@ -123,7 +123,7 @@ Color specification:
   0                 SPECIAL: Does not affect the zone
 
 The colors command may be used to turn off the backlight in all zones:
-$ apexctl colors 1 1 1 1 1
+  $ apexctl colors 1 1 1 1 1
 After running it, you may use the save command immediately to keep it off the
 next time the keyboard is powered on.
 ```
