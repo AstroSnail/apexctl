@@ -119,39 +119,39 @@ next time the keyboard is powered on.
 
 To help you configure your hotkeys, the default key mappings are as follows:
 <table>
-	<thead>
-		<tr><th>Key</th><th>Symbol</th></tr>
-	</thead>
-	<tbody>
-		<tr><td>L1</td><td>XF86Launch5</td></tr>
-		<tr><td>L2</td><td>XF86Launch6</td></tr>
-		<tr><td>L3</td><td>XF86Launch7</td></tr>
-		<tr><td>L4</td><td>XF86Launch8</td></tr>
-		<tr><td>&#x2196;</td><td>XF86ScrollUp</td></tr>
-		<tr><td>&#x2197;</td><td>XF86ScrollDown</td></tr>
-		<tr><td>MX1</td><td>XF86AudioMedia</td></tr>
-		<tr><td>MX2</td><td>XF86Display</td></tr>
-		<tr><td>MX3</td><td>XF86KbdLightOnOff</td></tr>
-		<tr><td>MX4</td><td>XF86KbdBrightnessDown</td></tr>
-		<tr><td>MX5</td><td>XF86KbdBrightnessUp</td></tr>
-		<tr><td>MX6</td><td>XF86Reply</td></tr>
-		<tr><td>MX7</td><td>XF86MailForward</td></tr>
-		<tr><td>MX8</td><td>XF86Save</td></tr>
-		<tr><td>MX9</td><td>XF86Documents</td></tr>
-		<tr><td>MX10</td><td>XF86Battery</td></tr>
-		<tr><td>M1</td><td>XF86Launch1</td></tr>
-		<tr><td>M2</td><td>XF86Launch2</td></tr>
-		<tr><td>M3</td><td>XF86WWW</td></tr>
-		<tr><td>M4</td><td>XF86DOS</td></tr>
-		<tr><td>M5</td><td>XF86ScreenSaver</td></tr>
-		<tr><td>M6</td><td>XF86RotateWindows</td></tr>
-		<tr><td>M7</td><td>XF86TaskPane</td></tr>
-		<tr><td>M8</td><td>XF86Mail</td></tr>
-		<tr><td>M9</td><td>XF86Favorites</td></tr>
-		<tr><td>M10</td><td>XF86MyComputer</td></tr>
-		<tr><td>M11</td><td>XF86Back</td></tr>
-		<tr><td>M12</td><td>XF86Forward</td></tr>
-	</tbody>
+  <thead>
+    <tr><th>Key</th><th>Symbol</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>L1</td><td>XF86Launch5</td></tr>
+    <tr><td>L2</td><td>XF86Launch6</td></tr>
+    <tr><td>L3</td><td>XF86Launch7</td></tr>
+    <tr><td>L4</td><td>XF86Launch8</td></tr>
+    <tr><td>&#x2196;</td><td>XF86ScrollUp</td></tr>
+    <tr><td>&#x2197;</td><td>XF86ScrollDown</td></tr>
+    <tr><td>MX1</td><td>XF86AudioMedia</td></tr>
+    <tr><td>MX2</td><td>XF86Display</td></tr>
+    <tr><td>MX3</td><td>XF86KbdLightOnOff</td></tr>
+    <tr><td>MX4</td><td>XF86KbdBrightnessDown</td></tr>
+    <tr><td>MX5</td><td>XF86KbdBrightnessUp</td></tr>
+    <tr><td>MX6</td><td>XF86Reply</td></tr>
+    <tr><td>MX7</td><td>XF86MailForward</td></tr>
+    <tr><td>MX8</td><td>XF86Save</td></tr>
+    <tr><td>MX9</td><td>XF86Documents</td></tr>
+    <tr><td>MX10</td><td>XF86Battery</td></tr>
+    <tr><td>M1</td><td>XF86Launch1</td></tr>
+    <tr><td>M2</td><td>XF86Launch2</td></tr>
+    <tr><td>M3</td><td>XF86WWW</td></tr>
+    <tr><td>M4</td><td>XF86DOS</td></tr>
+    <tr><td>M5</td><td>XF86ScreenSaver</td></tr>
+    <tr><td>M6</td><td>XF86RotateWindows</td></tr>
+    <tr><td>M7</td><td>XF86TaskPane</td></tr>
+    <tr><td>M8</td><td>XF86Mail</td></tr>
+    <tr><td>M9</td><td>XF86Favorites</td></tr>
+    <tr><td>M10</td><td>XF86MyComputer</td></tr>
+    <tr><td>M11</td><td>XF86Back</td></tr>
+    <tr><td>M12</td><td>XF86Forward</td></tr>
+  </tbody>
 </table>
 
 If you you use Xorg and you don't like these mappings, you can change them up
@@ -163,39 +163,39 @@ automatically load `~/.Xmodmap`? Which ones?)
 If you do this the key mappings will instead be as follows:
 
 <table>
-	<thead>
-		<tr><th>Key</th><th>Symbol</th></tr>
-	</thead>
-	<tbody>
-		<tr><td>L1</td><td>XF86Launch1</td></tr>
-		<tr><td>L2</td><td>XF86Launch2</td></tr>
-		<tr><td>L3</td><td>XF86Launch3</td></tr>
-		<tr><td>L4</td><td>XF86Launch4</td></tr>
-		<tr><td>&#x2196;</td><td>XF86Back</td></tr>
-		<tr><td>&#x2197;</td><td>XF86Forward</td></tr>
-		<tr><td>MX1</td><td>F25</td></tr>
-		<tr><td>MX2</td><td>F26</td></tr>
-		<tr><td>MX3</td><td>F27</td></tr>
-		<tr><td>MX4</td><td>F28</td></tr>
-		<tr><td>MX5</td><td>F29</td></tr>
-		<tr><td>MX6</td><td>F30</td></tr>
-		<tr><td>MX7</td><td>F31</td></tr>
-		<tr><td>MX8</td><td>F32</td></tr>
-		<tr><td>MX9</td><td>F33</td></tr>
-		<tr><td>MX10</td><td>F34</td></tr>
-		<tr><td>M1</td><td>F13</td></tr>
-		<tr><td>M2</td><td>F14</td></tr>
-		<tr><td>M3</td><td>F15</td></tr>
-		<tr><td>M4</td><td>F16</td></tr>
-		<tr><td>M5</td><td>F17</td></tr>
-		<tr><td>M6</td><td>F18</td></tr>
-		<tr><td>M7</td><td>F19</td></tr>
-		<tr><td>M8</td><td>F20</td></tr>
-		<tr><td>M9</td><td>F21</td></tr>
-		<tr><td>M10</td><td>F22</td></tr>
-		<tr><td>M11</td><td>F23</td></tr>
-		<tr><td>M12</td><td>F24</td></tr>
-	</tbody>
+  <thead>
+    <tr><th>Key</th><th>Symbol</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>L1</td><td>XF86Launch1</td></tr>
+    <tr><td>L2</td><td>XF86Launch2</td></tr>
+    <tr><td>L3</td><td>XF86Launch3</td></tr>
+    <tr><td>L4</td><td>XF86Launch4</td></tr>
+    <tr><td>&#x2196;</td><td>XF86Back</td></tr>
+    <tr><td>&#x2197;</td><td>XF86Forward</td></tr>
+    <tr><td>MX1</td><td>F25</td></tr>
+    <tr><td>MX2</td><td>F26</td></tr>
+    <tr><td>MX3</td><td>F27</td></tr>
+    <tr><td>MX4</td><td>F28</td></tr>
+    <tr><td>MX5</td><td>F29</td></tr>
+    <tr><td>MX6</td><td>F30</td></tr>
+    <tr><td>MX7</td><td>F31</td></tr>
+    <tr><td>MX8</td><td>F32</td></tr>
+    <tr><td>MX9</td><td>F33</td></tr>
+    <tr><td>MX10</td><td>F34</td></tr>
+    <tr><td>M1</td><td>F13</td></tr>
+    <tr><td>M2</td><td>F14</td></tr>
+    <tr><td>M3</td><td>F15</td></tr>
+    <tr><td>M4</td><td>F16</td></tr>
+    <tr><td>M5</td><td>F17</td></tr>
+    <tr><td>M6</td><td>F18</td></tr>
+    <tr><td>M7</td><td>F19</td></tr>
+    <tr><td>M8</td><td>F20</td></tr>
+    <tr><td>M9</td><td>F21</td></tr>
+    <tr><td>M10</td><td>F22</td></tr>
+    <tr><td>M11</td><td>F23</td></tr>
+    <tr><td>M12</td><td>F24</td></tr>
+  </tbody>
 </table>
 
 You can modify `config/extra/Xmodmap` to your preference before you install it.
