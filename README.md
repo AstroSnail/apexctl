@@ -155,7 +155,7 @@ To help you configure your hotkeys, the default key mappings are as follows:
 </table>
 
 If you you use Xorg and you don't like these mappings, you can change them up
-with the provided `config/extra/Xmodmap` file. Copy this file to `~/.Xmodmap`
+with the provided `misc/Xmodmap` file. Copy this file to `~/.Xmodmap`
 (or append its contents if it already exists) and add `xmodmap ~/.Xmodmap` to
 your init file. (usually `~/.xinitrc`) (**TODO:** Some display managers
 automatically load `~/.Xmodmap`? Which ones?)
@@ -198,7 +198,7 @@ If you do this the key mappings will instead be as follows:
   </tbody>
 </table>
 
-You can modify `config/extra/Xmodmap` to your preference before you install it.
+You can modify `misc/Xmodmap` to your preference before you install it.
 
 If you use Wayland and you don't like the default mappings, you'll have more
 luck with the Advanced configuration below.
@@ -213,13 +213,13 @@ there is a way using XKB, but it'll take some work, skill, and probably luck.
 
  - If you use Xorg, add `setxkbmap -I "$HOME/.xkb" -print -rules apex | xkbcomp -I"$HOME/.xkb" - "$DISPLAY"` to an init file. (usually `~/.xinitrc`)
  - - You can modify the setxkbmap command to your liking. For example: `setxkbmap -I "$HOME/.xkb" -print -rules apex us colemak compose:menu`
- - - If you want to use different options, you'll need to modify the files in `config/extra/rules/`. They have instructions inside.
+ - - If you want to use different options, you'll need to modify the files in `xkb/rules/`. They have instructions inside.
  - - If you use another keyboard layout manager, it's up to you to figure out how to make it work.
 
  - If you use Wayland, your compositor will need to implement libxkbcommon, and it's up to you to configure it. (**TODO:** Add examples)
 
 Once you're done, the key mappings will now be like the second table above. If
 you wish to use different mappings, you can modify
-`config/extra/symbols/steelseries` before you install it.
+`xkb/symbols/steelseries` before you install it.
 
 Be aware that Xorg appears to only support F-keys up to F35.
