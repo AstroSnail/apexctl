@@ -8,8 +8,8 @@
   preBuild = ''
     buildFlagsArray+=(CC=gcc)
     buildFlagsArray+=(CPPLIBS="''${NIX_CFLAGS_COMPILE}")
-    buildFlagsArray+=(LDFLAGS="-Wl,$(tr -s ' ' , <<<"''${NIX_LDFLAGS}")")
-    buildFlagsArray+=(LIBS=-lhidapi-libusb)
+    buildFlagsArray+=(LDFLAGS=-Wl,"$(tr -s ' ' , <<<"''${NIX_LDFLAGS}")")
+    buildFlagsArray+=(LDLIBS=-lhidapi-libusb)
     buildFlagsArray+=(HIDAPI_LONG_INCLUDE=1)
   '';
   preInstall = ''
