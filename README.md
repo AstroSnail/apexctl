@@ -111,7 +111,7 @@ Brightness specification:
 Color specification:
   Up to 5 colors can be specified.
   For the Apex, they set south, east, north, west and logo zones in that order.
-  For the Apex RAW, only the first is functional.
+  This command is not functional in the Apex RAW.
   The formats are case-insensitive.
 
   Format   Example  Meaning
@@ -122,8 +122,10 @@ Color specification:
   A        4        Equivalent to FFFFFF4
   0                 SPECIAL: Does not affect the zone
 
-The colors command may be used to turn off the backlight in all zones:
-  $ apexctl colors 1 1 1 1 1
+For the Apex, this command may be used to turn off the backlight in all zones:
+  # apexctl colors 1 1 1 1 1
+For the Apex RAW, you will instead need to use the bright command:
+  # apexctl bright 1 1
 After running it, you may use the save command immediately to keep it off the
 next time the keyboard is powered on.
 ```

@@ -499,7 +499,7 @@ void help (
 		"Color specification:\n"
 		"  Up to 5 colors can be specified.\n"
 		"  For the Apex, they set south, east, north, west and logo zones in that order.\n"
-		"  For the Apex RAW, only the first is functional.\n"
+		"  This command is not functional in the Apex RAW.\n"
 		"  The formats are case-insensitive.\n"
 		"\n"
 		"  Format   Example  Meaning\n"
@@ -510,8 +510,10 @@ void help (
 		"  A        4        Equivalent to FFFFFF4\n"
 		"  0                 SPECIAL: Does not affect the zone\n"
 		"\n"
-		"The colors command may be used to turn off the backlight in all zones:\n"
-		"  $ apexctl colors 1 1 1 1 1\n"
+		"For the Apex, this command may be used to turn off the backlight in all zones:\n"
+		"  # apexctl colors 1 1 1 1 1\n"
+                "For the Apex RAW, you will instead need to use the bright command:\n"
+                "  # apexctl bright 1 1\n"
 		"After running it, you may use the save command immediately to keep it off the\n"
 		"next time the keyboard is powered on.\n",
 	stderr);
