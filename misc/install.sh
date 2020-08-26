@@ -42,13 +42,14 @@ apex_install () {
 }
 
 apex_uninstall () {
-  rm -f -- "${BINDIR}/apexctl"
-  rm -f -- "${UDEVHWDBDIR}/90-apex.hwdb"
-  rm -f -- "${UDEVRULESDIR}/90-apexctl.rules"
-  rm -f -- "${XORGCONFDIR}/90-apex.conf"
-  rm -f -- "${XKBDIR}/rules/apex"
-  rm -f -- "${XKBDIR}/rules/apex.lst"
-  rm -f -- "${XKBDIR}/symbols/steelseries"
+  rm -f -- \
+    "${BINDIR}/apexctl" \
+    "${UDEVHWDBDIR}/90-apex.hwdb" \
+    "${UDEVRULESDIR}/90-apexctl.rules" \
+    "${XORGCONFDIR}/90-apex.conf" \
+    "${XKBDIR}/rules/apex" \
+    "${XKBDIR}/rules/apex.lst" \
+    "${XKBDIR}/symbols/steelseries"
 
   if [ "${UDEVRELOAD}" = "y" ]
   then
