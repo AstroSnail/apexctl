@@ -16,25 +16,22 @@ set -eu
 : "${UDEVRELOAD:=y}"
 
 apex_install () {
-  install -d -- "${BINDIR}" "${UDEVHWDBDIR}" "${UDEVRULESDIR}"
-  install -m0755 -- apexctl "${BINDIR}/apexctl"
-  install -m0644 -- 00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
+  install -D -m0755 -- apexctl "${BINDIR}/apexctl"
+  install -D -m0644 -- 00-apexctl.rules "${UDEVRULESDIR}/90-apexctl.rules"
 
   if [ "${ADVANCED}" = "y" ]
   then
-    install -d -- "${XKBDIR}/rules" "${XKBDIR}/symbols"
-    install -m0644 -- 00-apex-advanced.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
-    install -m0644 -- xkb/rules/apex "${XKBDIR}/rules/apex"
-    install -m0644 -- xkb/rules/apex.lst "${XKBDIR}/rules/apex.lst"
-    install -m0644 -- xkb/symbols/steelseries "${XKBDIR}/symbols/steelseries"
+    install -D -m0644 -- 00-apex-advanced.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
+    install -D -m0644 -- xkb/rules/apex "${XKBDIR}/rules/apex"
+    install -D -m0644 -- xkb/rules/apex.lst "${XKBDIR}/rules/apex.lst"
+    install -D -m0644 -- xkb/symbols/steelseries "${XKBDIR}/symbols/steelseries"
   else
-    install -m0644 -- 00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
+    install -D -m0644 -- 00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
   fi
 
   if [ "${USEXORG}" = "y" ]
   then
-    install -d -- "${XORGCONFDIR}"
-    install -m0644 -- 00-apex.conf "${XORGCONFDIR}/90-apex.conf"
+    install -D -m0644 -- 00-apex.conf "${XORGCONFDIR}/90-apex.conf"
   fi
 
   if [ "${UDEVRELOAD}" = "y" ]
