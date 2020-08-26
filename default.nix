@@ -11,6 +11,7 @@
     buildFlagsArray+=(LDFLAGS=-Wl,"$(tr -s ' ' , <<<"''${NIX_LDFLAGS}")")
     buildFlagsArray+=(LDLIBS=-lhidapi-libusb)
     buildFlagsArray+=(HIDAPI_LONG_INCLUDE=1)
+    export BINDIR="$out/bin"
   '';
   preInstall = ''
     export BINDIR="$out/bin"
