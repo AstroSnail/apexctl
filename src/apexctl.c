@@ -494,8 +494,8 @@ void help (
 		"\n"
 		"For the Apex, this command may be used to turn off the backlight in all zones:\n"
 		"  # apexctl colors 1 1 1 1 1\n"
-                "For the Apex RAW, you will instead need to use the bright command:\n"
-                "  # apexctl bright 1 1\n"
+		"For the Apex RAW, you will instead need to use the bright command:\n"
+		"  # apexctl bright 1 1\n"
 		"After running it, you may use the save command immediately to keep it off the\n"
 		"next time the keyboard is powered on.\n",
 	stderr);
