@@ -2,10 +2,10 @@
   description = "A flake for building ApexCtl";
   outputs = { self, nixpkgs }:
     let
-      apexctl = { pkgs }: {
+      apexctl = { hidapi }: {
         name = "apexctl";
         src = self;
-        buildInputs = [ pkgs.hidapi ];
+        buildInputs = [ hidapi ];
         preBuild = ''
           buildFlagsArray+=(CC=gcc)
           buildFlagsArray+=(CPPLIBS="''${NIX_CFLAGS_COMPILE}")
@@ -27,6 +27,6 @@
       pkgs-x86_64-linux = import nixpkgs { system = "x86_64-linux"; };
     in {
       defaultPackage.x86_64-linux = pkgs-x86_64-linux.stdenv.mkDerivation
-        (apexctl { pkgs = pkgs-x86_64-linux; });
+        (apexctl { hidapi = pkgs-x86_64-linux.hidapi; });
     };
 }
