@@ -22,10 +22,9 @@ stdenv.mkDerivation {
     export UDEVRULESDIR="$out/etc/udev/rules.d"
     export USEXORG=y
     export XORGCONFDIR="$out/etc/X11/xorg.conf.d"
+    export XKBDIR="$out/etc/X11/xkb"
     export IHAVEANALLTERRAINVEHICLE=y
     export UDEVRELOAD=n
-  '' + stdenv.lib.optionalString advanced ''
-    export XKBDIR="$out/etc/X11/xkb"
   '';
   installTargets = if advanced then "install-advanced" else "install";
   meta = {
