@@ -4,7 +4,9 @@
     let supportedSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
     in {
       packages = supportedSystems (system:
-        let callApexctl = nixpkgs.legacyPackages.${system}.callPackage ./.;
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          callApexctl = pkgs.callPackage ./.;
         in {
           apexctl = callApexctl { inherit self; };
           apexctl-advanced = callApexctl {
