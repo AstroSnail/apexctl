@@ -6,7 +6,7 @@
       packages = supportedSystems (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          callApexctl = pkgs.callPackage ./.;
+          callApexctl = pkgs.callPackage self;
         in {
           apexctl = callApexctl { inherit self; };
           apexctl-advanced = callApexctl {
