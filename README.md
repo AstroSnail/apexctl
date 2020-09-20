@@ -56,6 +56,14 @@ make ENABLE_DATA_PRINT=1 HIDAPI_IMPL=hidapi-hidraw
 ```
 You can find the options and their defaults at the top of the Makefile.
 
+### Nix:
+
+Nix can be used to build and package ApexCtl!
+```
+nix build
+```
+*Note: only the flake is tested. If you're not using flakes and it doesn't work, please open an issue.*
+
 ## Installation
 
 ```
