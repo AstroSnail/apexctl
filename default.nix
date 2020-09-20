@@ -1,9 +1,10 @@
-{ self ? builtins.path {
-  name = "apexctl";
+let name = "apexctl";
+in { self ? builtins.path {
+  inherit name;
   path = ./.;
 }, stdenv, hidapi, advanced ? false }:
 stdenv.mkDerivation {
-  name = "apexctl";
+  inherit name;
   src = self;
   buildInputs = [ hidapi ];
   preBuild = ''
