@@ -1,5 +1,5 @@
 {
-  description = "A flake for building ApexCtl";
+  description = "A tool to control SteelSeries Apex keyboards on Linux";
   outputs = { self, nixpkgs }:
     let supportedSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
     in {
