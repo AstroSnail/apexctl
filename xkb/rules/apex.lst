@@ -3,6 +3,7 @@
 
 ! option
   caps          Caps Lock behavior
+	caps:escape   Make Caps Lock an additional Esc
   caps:hyper    Make Caps Lock an additional Hyper
   Compose key   Position of Compose key
   compose:menu  Menu

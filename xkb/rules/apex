@@ -10,6 +10,7 @@
   *        =  pc(pc105)
 
 ! option        =  symbols
+  caps:escape   = +capslock(escape)
   caps:hyper    = +capslock(hyper)
   compose:menu  = +compose(menu)
   compose:102   = +compose(102)
