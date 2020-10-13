@@ -23,7 +23,7 @@ stdenv.mkDerivation {
     export UDEVRULESDIR="$out/etc/udev/rules.d"
     export USEXORG=y
     export XORGCONFDIR="$out/etc/X11/xorg.conf.d"
-    export XKBDIR="$out/etc/X11/xkb"
+    export XKBDIR="$out/share/X11/xkb"
     export IHAVEANALLTERRAINVEHICLE=y
     export UDEVRELOAD=n
   '';
