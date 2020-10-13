@@ -9,11 +9,12 @@
   apex300  =  steelseries(apex300)
   *        =  pc(pc105)
 
-! option        =  symbols
-  caps:escape   = +capslock(escape)
-  caps:hyper    = +capslock(hyper)
-  compose:menu  = +compose(menu)
-  compose:102   = +compose(102)
+! option                  =  symbols
+  caps:escape             = +capslock(escape)
+  caps:hyper              = +capslock(hyper)
+  compose:menu            = +compose(menu)
+  compose:102             = +compose(102)
+	shift:rshift_backspace  = +shift(rshift_backspace)
 // If you want to give options to setxkbmap like you would normally do,
 // you have some work to do. You can copy the options you want from
 // /usr/share/X11/xkb/rules/evdev under "! option = symbols"

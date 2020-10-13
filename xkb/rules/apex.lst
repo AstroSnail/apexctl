@@ -2,12 +2,13 @@
   apex300  SteelSeries Apex 300 (Apex RAW)
 
 ! option
-  caps          Caps Lock behavior
-	caps:escape   Make Caps Lock an additional Esc
-  caps:hyper    Make Caps Lock an additional Hyper
-  Compose key   Position of Compose key
-  compose:menu  Menu
-  compose:102   The "&lt; &gt;" key
+  caps                    Caps Lock behavior
+	caps:escape             Make Caps Lock an additional Esc
+  caps:hyper              Make Caps Lock an additional Hyper
+  Compose key             Position of Compose key
+  compose:menu            Menu
+  compose:102             The "&lt; &gt;" key
+	shift:rshift_backspace  Make Right Shift an additional Backspace
 // Here you can add descriptions to options you might want to use.
 // You can copy them from /usr/share/X11/xkb/rules/evdev.lst under "! option"
 // XKB appears to require descriptions for all names used in the rules.
