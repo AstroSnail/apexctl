@@ -229,5 +229,11 @@ there is a way using XKB, but it'll take some work, skill, and probably luck.
 Once you're done, the key mappings will now be like the second table above. If
 you wish to use different mappings, you can modify
 `xkb/symbols/steelseries` before you install it.
+You're encouraged to play around with XKB to find your preferred setup.
+[How to further enhance XKB configuration][xkb1] and [An Unreliable Guide to Xkb Configuration][xkb2]
+may help you become familiar XKB.
+
+[xkb1]: https://www.xfree86.org/current/XKB-Enhancing.html
+[xkb2]: https://www.charvolant.org/doug/xkb/html/xkb.html
 
 Be aware that Xorg appears to only support F-keys up to F35.
