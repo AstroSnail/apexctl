@@ -25,6 +25,7 @@ apex_install () {
 		install -D -m0644 -- xkb/rules/apex "${XKBDIR}/rules/apex"
 		install -D -m0644 -- xkb/rules/apex.lst "${XKBDIR}/rules/apex.lst"
 		install -D -m0644 -- xkb/symbols/steelseries "${XKBDIR}/symbols/steelseries"
+		install -D -m0644 -- xkb/symbols/shift "${XKBDIR}/symbols/shift"
 	else
 		install -D -m0644 -- 00-apex.hwdb "${UDEVHWDBDIR}/90-apex.hwdb"
 	fi
@@ -49,7 +50,8 @@ apex_uninstall () {
 		"${XORGCONFDIR}/90-apex.conf" \
 		"${XKBDIR}/rules/apex" \
 		"${XKBDIR}/rules/apex.lst" \
-		"${XKBDIR}/symbols/steelseries"
+		"${XKBDIR}/symbols/steelseries" \
+		"${XKBDIR}/symbols/shift"
 
 	if [ "${UDEVRELOAD}" = "y" ]
 	then
