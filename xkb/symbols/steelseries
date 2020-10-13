@@ -1,4 +1,4 @@
-default partial alphanumeric_keys
+default partial alphanumeric_keys function_keys
 xkb_symbols "apex" {
 	// L1-L4
 	key <I156> { [ XF86Launch1 ] };
@@ -30,3 +30,5 @@ xkb_symbols "apex" {
 	key <FK23> { [ F23 ] };
 	key <FK24> { [ F24 ] };
 };
+
+// TODO: add vtswitch variant?
