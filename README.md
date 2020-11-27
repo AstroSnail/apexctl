@@ -13,6 +13,7 @@
  - [Installation](#installation)
  - [Usage](#usage)
  - [Advanced](#advanced)
+ - [Bugs](#bugs)
 
 [ApexCtl]: https://github.com/tuxmark5/ApexCtl
 [ApexMacros]: https://github.com/Gibtnix/Apex-Macros
@@ -237,3 +238,11 @@ may help you become familiar XKB.
 [xkb2]: https://www.charvolant.org/doug/xkb/html/xkb.html
 
 Be aware that Xorg appears to only support F-keys up to F35.
+
+## Bugs
+
+[#7][i7]: Extra keys are disabled after suspending
+[#11][i11]: Apex 3 Keyboard locks up when running apexctl
+
+[i7]: https://github.com/AstroSnail/apexctl/issues/7
+[i11]: https://github.com/AstroSnail/apexctl/issues/11
