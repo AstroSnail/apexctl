@@ -1,5 +1,6 @@
 ENABLE_CMD_PROBE=1
 ENABLE_DATA_PRINT=0
+ENABLE_EXPERIMENTAL_SUPPORT=0
 HIDAPI_IMPL=hidapi-libusb
 HIDAPI_LONG_INCLUDE=0
 
@@ -17,7 +18,15 @@ apexctl: src/steelseries.c src/apexctl.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(CPPLIBS) $(LDFLAGS) src/steelseries.c src/apexctl.c $(LDLIBS) -o $@
 
 src/steelseries.c: src/gensteelseries.sh src/steelseries.txt
-	src/gensteelseries.sh src/steelseries.txt >$@
+	if [ "$(ENABLE_EXPERIMENTAL_SUPPORT)" != "1" ]; then \
+		src/gensteelseries.sh src/steelseries.txt >$@; \
+	else \
+		$(MAKE) src/steelseries-cat.txt; \
+		src/gensteelseries.sh src/steelseries-cat.txt >$@; \
+	fi
+
+src/steelseries-cat.txt: src/steelseries.txt src/steelseries-experimental.txt
+	cat src/steelseries.txt src/steelseries-experimental.txt >$@
 
 00-apex.hwdb: src/genhwdb.sh src/hwdb-body.txt src/steelseries.txt
 	src/genhwdb.sh src/steelseries.txt src/hwdb-body.txt >$@
@@ -31,7 +40,7 @@ src/steelseries.c: src/gensteelseries.sh src/steelseries.txt
 00-apex.conf: src/genxorgconf.sh src/steelseries.txt
 	src/genxorgconf.sh src/steelseries.txt >$@
 
-clean:; rm -f apexctl src/steelseries.c 00-apex.hwdb 00-apex-advanced.hwdb 00-apexctl.rules 00-apex.conf
+clean:; rm -f apexctl src/steelseries.c src/steelseries-cat.txt 00-apex.hwdb 00-apex-advanced.hwdb 00-apexctl.rules 00-apex.conf
 
 install: all
 	misc/install.sh

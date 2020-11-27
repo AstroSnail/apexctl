@@ -2,5 +2,3 @@ SteelSeries Apex RAW	1200
 SteelSeries Apex	1202
 SteelSeries Apex 350	1206
 SteelSeries Apex 300	1208
-SteelSeries Apex M800	1600
-SteelSeries Apex 3	161A
