@@ -1,8 +1,8 @@
-ENABLE_CMD_PROBE=1
-ENABLE_DATA_PRINT=0
-ENABLE_EXPERIMENTAL_SUPPORT=0
-HIDAPI_IMPL=hidapi-libusb
-HIDAPI_LONG_INCLUDE=0
+ENABLE_CMD_PROBE=1            # Enable the probe command, for testing
+ENABLE_DATA_PRINT=0           # Enable a printout of data sent to the keyboard, for debugging
+ENABLE_EXPERIMENTAL_SUPPORT=0 # Enable the M800 and Apex 3
+HIDAPI_IMPL=hidapi-libusb     # hidapi-libusb or hidapi-hidraw
+HIDAPI_LONG_INCLUDE=0         # Use the long include path, to fix builds
 
 CC=c99
 CFLAGS=-Werror=all -Wextra -Wpedantic -Os -Isrc
