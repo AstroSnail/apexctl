@@ -3,7 +3,7 @@
 ### Control SteelSeries Apex keyboards on GNU/Linux!
 
 *Rewrite of a utility with the [same name][ApexCtl], with some influence from [Apex-Macros][ApexMacros].*  
-*Works with the SteelSeries Apex, Apex RAW, 350 and 300, with attempted support of the M800 and Apex 3 keyboards.*  
+*Works with the SteelSeries Apex, Apex RAW, 350 and 300, with attempted support of others.*  
 **This probably won't work with the newer SteelSeries Apex keyboards.**
 **There is no real method of adding support for them at this time.**
 **If you know how to figure out USB protocols or somebody who does, help would be GREATLY appreciated.**
