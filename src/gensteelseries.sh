@@ -15,12 +15,12 @@ echo 'uint16_t const steelseries_vendor = 0x1038;'
 
 echo 'char const *const steelseries_names [] = {'
 cut -f1 "${INPUTFILE}" | while read -r name
-do echo '	"'"${name}"'",'
+do echo '  "'"${name}"'",'
 done
 echo '};'
 
 echo 'uint16_t const steelseries_products [] = {'
 cut -f2 "${INPUTFILE}" | while read -r product
-do echo "	0x${product},"
+do echo "  0x${product},"
 done
 echo '};'

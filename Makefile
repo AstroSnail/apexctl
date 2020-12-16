@@ -19,10 +19,10 @@ apexctl: src/steelseries.c src/apexctl.c
 
 src/steelseries.c: src/gensteelseries.sh src/steelseries.txt
 	if [ "$(ENABLE_EXPERIMENTAL_SUPPORT)" != "1" ]; then \
-		src/gensteelseries.sh src/steelseries.txt >$@; \
+	  src/gensteelseries.sh src/steelseries.txt >$@; \
 	else \
-		$(MAKE) src/steelseries-cat.txt; \
-		src/gensteelseries.sh src/steelseries-cat.txt >$@; \
+	  $(MAKE) src/steelseries-cat.txt; \
+	  src/gensteelseries.sh src/steelseries-cat.txt >$@; \
 	fi
 
 src/steelseries-cat.txt: src/steelseries.txt src/steelseries-experimental.txt
