@@ -243,6 +243,8 @@ Be aware that Xorg appears to only support F-keys up to F35.
 
 [#7][i7]: Extra keys are disabled after suspending  
 [#11][i11]: Apex 3 Keyboard locks up when running apexctl  
+[#12][i12]: Udev issues  
 
 [i7]: https://github.com/AstroSnail/apexctl/issues/7
 [i11]: https://github.com/AstroSnail/apexctl/issues/11
+[i12]: https://github.com/AstroSnail/apexctl/issues/12
