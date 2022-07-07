@@ -1,18 +1,18 @@
 {
   description = "A tool to control SteelSeries Apex keyboards on Linux";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system: {
-      packages = let
-        pkgs = nixpkgs.legacyPackages.${system};
-        callApexctl = pkgs.callPackage self;
-      in {
-        apexctl = callApexctl { inherit self; };
-        apexctl-advanced = callApexctl {
-          inherit self;
-          advanced = true;
-        };
-      };
-      defaultPackage = self.packages.${system}.apexctl;
-    });
+
+  outputs = { self, nixpkgs }:
+    let
+      supportedSystems = [ "x86_64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
+
+    in {
+      packages = forAllSystems (system:
+        let pkgs = nixpkgsFor.${system};
+        in {
+          apexctl = pkgs.callPackage self { };
+          apexctl-advanced = pkgs.callPackage self { advanced = true; };
+        });
+    };
 }
