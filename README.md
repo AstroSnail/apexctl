@@ -8,6 +8,9 @@
 **There is no real method of adding support for them at this time.**
 **If you know how to figure out USB protocols or somebody who does, help would be GREATLY appreciated.**
 
+You might also be interested in OpenRGB.
+Its support for the Steelseries Apex is incomplete, but usable in a rudimentary fashion.
+
  - [Dependencies](#dependencies)
  - [Build](#build)
  - [Installation](#installation)
